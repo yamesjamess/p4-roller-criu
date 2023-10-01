@@ -1,1 +1,1 @@
-web: gunicorn roller_criu.wsgi
+web: gunicorn roller_criu_project.wsgi
