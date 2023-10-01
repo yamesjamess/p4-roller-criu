@@ -34,7 +34,7 @@ SECRET_KEY = 'os.environ.get("SECRET_KEY")'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-yamesjamess-p4untitled-nlxm5qem1br.ws-eu105.gitpod.io, roller-criu.heroku.app.com']
+ALLOWED_HOSTS = ['8000-yamesjamess-p4untitled-cidohp3yj90.ws-eu105.gitpod.io', 'roller-criu.heroku.app.com']
 
 
 # Application definition
