@@ -11,7 +11,4 @@ As a **role** I can **capability** so that **recieved benefit**
 
 Acceptance Criteria
 
-1. Given that I am 
-
-Tasks
-- [ ]
+1.
