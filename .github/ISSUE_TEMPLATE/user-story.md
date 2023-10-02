@@ -13,7 +13,7 @@ EPIC #
 
 Acceptance Criteria
 
-1.  Given that I am 
+1. Given that I am 
 
 Tasks
 - [ ]
