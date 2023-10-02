@@ -23,7 +23,7 @@ class Class(models.Model):
     class_level = models.CharField(max_length=20, choices=LEVEL_CHOICES, default=BEGINNER)
     location = models.CharField(max_length=100)
     content = models.TextField()
-    featured_image = CloudinaryField('image', default='placeholer')
+    featured_image = CloudinaryField('image', default='placeholder')
     status = models.IntegerField(choices=STATUS, default=0)
     likes = models.ManyToManyField(User, related_name='class_likes', blank=True)
     # coach = models.ForeignKey(Coach, on_delete=models.SET_DEFAULT, default=1, related_name='class_post')
