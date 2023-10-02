@@ -131,17 +131,6 @@ __Steps to deploy the project on Heroku__
 
 ### Contents
 
-
-* The inspiration for this application comes from [Elaine Broche's MS3 Event Scheduler](https://github.com/elainebroche-dev/ms3-event-scheduler) and [Alex Kavanagh's Grocery List Generator](https://github.com/alexkavanagh-dev/grocery_list_generator)
-
-
-
-
-
-
-
-
-
 * All other content was written by the developer
 
 ### Achknowledgements
