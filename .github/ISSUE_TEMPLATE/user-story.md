@@ -9,8 +9,6 @@ assignees: yamesjamess
 
 As a **role** I can **capability** so that **recieved benefit**
 
-EPIC #
-
 Acceptance Criteria
 
 1. Given that I am 
