@@ -10,12 +10,12 @@ class LessonList(generic.ListView):
     paginate_by = 6
 
 
-class LessonDetails(View):
+class LessonDetail(View):
 
     def get(self, request, slug, *args, **kwargs):
         queryset = Lesson.objects.filter(status=1)
         lesson = get_object_or_404(queryset, slug=slug)
-        feedbacks = lesson.feedback.filter(approved=True).order_by('created_on')
+        feedbacks = lesson.feedbacks.filter(approved=True).order_by('created_on')
         liked = False
         if lesson.likes.filter(id=self.request.user.id).exists():
             liked = True
@@ -24,8 +24,8 @@ class LessonDetails(View):
             request,
             "lesson_detail.html",
             {
-                "lessson": lesson,
-                "feedback": feedbacks,
+                "lesson": lesson,
+                "feedbacks": feedbacks,
                 "liked": liked,
             },
         )
