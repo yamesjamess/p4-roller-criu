@@ -8,25 +8,25 @@
         <!-- Blog Entries Column -->
         <div class="col-12 mt-3 left">
             <div class="row">
-                {% for class in class_list %}
+                {% for lesson in lesson_list %}
                     <div class="col-md-4">
                         <div class="card mb-4">
                             <div class="card-body">
                                 <div class="image-container">
-                                {% if "placeholder" in class.featured_image.url %}
-                                <h1> I'm placeholder</h1>
+                                {% if "placeholder" in lesson.featured_image.url %}
+                                <img class="card-img-top" src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg">
                                 {% else %}
-                                <img class="card-img-top" src=" {{ class.featured_image.url }} ">
+                                <img class="card-img-top" src=" {{ lesson.featured_image.url }} ">
                                 {% endif %}
                                 <a href="#" class="class-link">
-                                    <h2 class="card-title">{{ class.title }}</h2>
-                                    <p class="card-text">{{ class.class_time }}</p>
-                                    <p class="card-text">{{ class.location }}</p>
+                                    <h2 class="card-title">{{ lesson.title }}</h2>
+                                    <p class="card-text">{{ lesson.lesson }}</p>
+                                    <p class="card-text">{{ lesson.location }}</p>
                                 </a>
                                 </div>
                                 <hr>
-                                <p class="card-text text-muted h6">{{ class.created_on }}
-                                    <i class="far fa-heart"></i> {{ class.number_of_likes }}
+                                <p class="card-text text-muted h6">{{ lesson.created_on }}
+                                    <i class="far fa-heart"></i> {{ lesson.number_of_likes }}
                                 </p>
                             </div>
                         </div>
