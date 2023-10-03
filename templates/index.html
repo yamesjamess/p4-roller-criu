@@ -18,11 +18,11 @@
                                 {% else %}
                                 <img class="card-img-top" src=" {{ lesson.featured_image.url }} ">
                                 {% endif %}
-                                <a href="#" class="class-link">
+                                <a href="{% url 'lesson_detail' lesson.slug %}" class="class-link">
                                     <h2 class="card-title">{{ lesson.title }}</h2>
-                                    <p class="card-text">{{ lesson.lesson }}</p>
-                                    <p class="card-text">{{ lesson.location }}</p>
                                 </a>
+                                <p class="card-text">{{ lesson.lesson_time }}</p>
+                                <p class="card-text">{{ lesson.location }}</p>
                                 </div>
                                 <hr>
                                 <p class="card-text text-muted h6">{{ lesson.created_on }}
