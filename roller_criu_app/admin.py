@@ -4,7 +4,7 @@ from django_summernote.admin import SummernoteModelAdmin
 
 
 @admin.register(Coach)
-class PostAdmin(SummernoteModelAdmin):
+class LessonAdmin(SummernoteModelAdmin):
 
     list_filter = ('first_name', 'last_name', 'specialization')
     list_display = ('pk', 'first_name', 'last_name', 'years_of_experience', 'specialization', 'status')
@@ -13,7 +13,7 @@ class PostAdmin(SummernoteModelAdmin):
 
 
 @admin.register(Lesson)
-class PostAdmin(SummernoteModelAdmin):
+class LessonAdmin(SummernoteModelAdmin):
 
     list_filter = ('status', 'created_on')
     list_display = ('pk', 'title', 'slug', 'coach', 'lesson_time', 'created_on', 'status')
@@ -23,13 +23,16 @@ class PostAdmin(SummernoteModelAdmin):
 
 
 @admin.register(Feedback)
-class CommentAdmin(admin.ModelAdmin):
+class FeedbackAdmin(admin.ModelAdmin):
 
     list_display = ('name', 'body', 'lesson_id', 'created_on', 'approved')
     list_filter = ('approved', 'created_on')
     search_fields = ['name', 'user_id', 'body']
-    actions = ['approved_comments']
+    actions = ['approved_feedback', 'unapprove_feedback']
 
-    def approved_comments(self, request, queryset):
+    def approved_feedback(self, request, queryset):
         queryset.update(approved=True)
+
+    def unapprove_feedback(self, request, queryset):
+        queryset.update(approved=False)
 
