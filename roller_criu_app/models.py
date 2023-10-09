@@ -70,9 +70,9 @@ class Lesson(models.Model):
 
 
 class Feedback(models.Model):
-    lesson_id = models.ForeignKey(Lesson, on_delete=models.CASCADE, related_name='feedbacks')
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE, related_name='feedbacks')
+    lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE, related_name='feedbacks')
     name = models.CharField(max_length=80)
+    email = models.EmailField()
     body = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
     approved = models.BooleanField(default=False)
