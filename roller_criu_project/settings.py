@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'cloudinary',
     'django_summernote',
+    'cripsy_forms',
     'roller_criu_app',
 ]
 
@@ -60,6 +61,8 @@ SITE_ID = 1
 
 LOGIN_REDIRECT_URL = '/'
 LOGPUT_REDIRECT_URL = '/'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
