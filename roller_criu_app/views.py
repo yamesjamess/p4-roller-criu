@@ -7,7 +7,7 @@ from .forms import FeedbackForm
 
 class LessonList(generic.ListView):
     model = Lesson
-    queryset = Lesson.objects.filter(status=1).order_by('lesson_level')
+    queryset = Lesson.objects.filter(status=1).order_by('lesson_time')
     template_name = 'index.html'
     paginate_by = 6
 
