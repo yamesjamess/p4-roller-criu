@@ -3,9 +3,17 @@
 {% block content %}
 
 <div class="container-fluid">
+    <!-- jumbotron for introduction message -->
+    <div class="jumbotron">
+        <div class="introduction-text">
+            <h1>Welcome to Roller Criú</h1>
+            <h4>Learn to become an artistic roller skater with us</h4>
+        </div>
+    </div>
+
     <div class="row">
 
-        <!-- Blog Entries Column -->
+        <!-- Lesson Entries Column -->
         <div class="col-12 mt-3 left">
             <div class="row">
                 {% for lesson in lesson_list %}
@@ -14,9 +22,22 @@
                             <div class="card-body">
                                 <div class="image-container">
                                 {% if "placeholder" in lesson.featured_image.url %}
-                                <img class="card-img-top" src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg">
+                                <img class="card-img-top" src="https://res.cloudinary.com/dukqu7lia/image/upload/v1696354385/placeholder.jpg">
                                 {% else %}
                                 <img class="card-img-top" src=" {{ lesson.featured_image.url }} ">
+                                {% endif %}
+                                {% if lesson.lesson_level == 'beginner'%}
+                                    <div class="image-banner banner-bkgd-beginner">
+                                        <p class="difficulty">beginner</p>
+                                    </div>
+                                {% elif lesson.lesson_level == 'intermediate'%}
+                                    <div class="image-banner banner-bkgd-intermediate">
+                                        <p class="difficulty">intermediate</p>
+                                    </div>
+                                {% elif lesson.lesson_level == 'advanced'%}
+                                    <div class="image-banner banner-bkgd-advanced">
+                                        <p class="difficulty">advanced</p>
+                                    </div>
                                 {% endif %}
                                 <a href="{% url 'lesson_detail' lesson.slug %}" class="class-link">
                                     <h2 class="card-title">{{ lesson.title }}</h2>
