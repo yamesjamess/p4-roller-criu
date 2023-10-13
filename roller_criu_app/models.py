@@ -71,7 +71,7 @@ class Lesson(models.Model):
 
 class Feedback(models.Model):
     lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE, related_name='feedbacks')
-    name = models.CharField(max_length=80)
+    username = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user_feedbacks')
     email = models.EmailField()
     body = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
@@ -81,4 +81,13 @@ class Feedback(models.Model):
         ordering = ['created_on']
 
     def __str__(self):
-        return f'Comment {self.body} by {self.name}'
+        return f'Feedback {self.body} by {self.username}'
+
+
+class Booking(models.Model):
+    lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE, related_name='lesson_bookings')
+    username = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user_bookings')
+    approved = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f'{self.lesson} is booked by {self.username}'
