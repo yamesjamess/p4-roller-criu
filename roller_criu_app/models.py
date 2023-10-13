@@ -55,7 +55,7 @@ class Lesson(models.Model):
     featured_image = CloudinaryField('image', default='placeholder')
     status = models.IntegerField(choices=STATUS, default=0)
     likes = models.ManyToManyField(User, related_name='lesson_likes', blank=True)
-    coach = models.ForeignKey(Coach, on_delete=models.SET(1), related_name='lesson_coach')
+    coach = models.ForeignKey(Coach, on_delete=models.DO_NOTHING, related_name='lesson_coach')
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
 
