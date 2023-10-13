@@ -1,33 +1,49 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html class="h-100">
+<html lang="en" class="h-100">
 
 <head>
     <title>Roller Criú</title>
+    <link rel="shortcut icon" href="{% static 'media/favicon/roller_criu_favicon.ico' %}">
 
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kodchasan:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous">
     </script>
+
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="">
 </head>
 
 <body class="d-flex flex-column h-100 main-bg">
 
     <!-- Navigation -->
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+    <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="{% url 'home' %}"><span class="brand">c<span class="red-o">o</span>de<span
-                        class="thin">|star</span></span></span></a>
+            <a class="navbar-brand" href="{% url 'home' %}">
+                <span class="brand">
+                    <img src="{% static 'media/logo.png' %}" alt="">
+                    Roller Criú
+                </span>
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
                 aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -35,9 +51,34 @@
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+                        <a {% if '/' == request.path %} class="nav-link active" aria-current="page" {% else %}
+                            class="nav-link" {% endif %} href="{% url 'home' %}">Home</a>
                     </li>
-                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a {% if 'about' == request.path %} class="nav-link active" aria-current="page" {% else %}
+                            class="nav-link" {% endif %} href="{% url 'home' %}">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a {% if 'all_lesssons' == request.path %} class="nav-link active" aria-current="page"
+                            {% else %} class="nav-link" {% endif %} href="#">All Lessons</a>
+                    </li>
+                    <li class="nav-item">
+                        <a {% if 'contact' == request.path %} class="nav-link active" aria-current="page" {% else %}
+                            class="nav-link" {% endif %} href="#">Contact</a>
+                    </li>
+                    {% if user.is_authenticated and not user.is_staff %}
+                    <li class="nav-item">
+                        <a {% if 'bookings' == request.path %} class="nav-link active" aria-current="page" {% else %}
+                            class="nav-link" {% endif %} href="#">Bookings</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
+                    </li>
+                    {% elif user.is_staff %}
+                    <li class="nav-item">
+                        <a {% if 'admin' == request.path %} class="nav-link active" aria-current="page" {% else %}
+                            class="nav-link" {% endif %} href="{% url 'admin:index' %}">Admin</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
                     </li>
@@ -50,12 +91,23 @@
                     </li>
                     {% endif %}
                 </ul>
-                <span class="navbar-text text-muted">
-                    adventures of a software developer
-                </span>
             </div>
         </div>
     </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                {% for message in messages%}
+                <div class="alert {{ message.tags }} alert-dismissible fade show" id="msg" role="alert">
+                    {{ message | safe }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                    </button>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
 
     <main class="flex-shrink-0 main-bg">
         {% block content %}
@@ -64,13 +116,33 @@
     </main>
 
     <!-- Footer -->
-    <footer class="footer mt-auto py-3 dark-bg">
-        <p class="m-0 text-center text-white">Made by Code Instituters</p>
-        <p class="m-0 text-center text-white">Follow us: <i class="fab fa-facebook-square ms-3"></i>
-            <i class="fab fa-twitter-square ms-3"></i>
-            <i class="fab fa-instagram-square ms-3"></i>
-            <i class="fab fa-youtube-square ms-3"></i></p>
+    <footer class="footer mt-auto py-3">
+
+            <p class="m-0 text-center footer-socials">Find us on:
+                <a href="https://facebook.com" target="_blank" rel="noopener"
+                aria-label="Visit our Facebook page (opens in a new tab)">
+                <i class="fab fa-facebook-square ms-3"></i></a>
+
+                <a href="https://twitter.com" target="_blank" rel="noopener"
+                aria-label="Visit our Twitter page (opens in a new tab)">
+                <i class="fab fa-twitter-square ms-3"></i></a>
+
+                <a href="https://instagram.com" target="_blank" rel="noopener"
+                aria-label="Visit our Instagram page (opens in a new tab)">
+                <i class="fab fa-instagram-square ms-3"></i></a>
+            </p>
+            <p class="m-0 mt-2 text-center footer-text">This website is for educational purposes only</p>
+
     </footer>
+
+    <!-- script for alert message -->
+    <script>
+        setTimeout(() => {
+            let message = document.getElementById('msg')
+            let alert = new bootstrap.Alert(message);
+            alert.close()
+        }, 3000);
+    </script>
 </body>
 
 </html>
