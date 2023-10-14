@@ -115,6 +115,10 @@ a {
     text-align: center;
 }
 
+.class-link{
+    color: #BF4B53;
+}
+
 /* Lesson Detail */
 
 .masthead {
@@ -185,8 +189,15 @@ a {
 }
 
 .lesson-time,
-.lesson-duration {
+.lesson-duration,
+.lesson-location {
     color: #000000E6;
+}
+
+.lesson-time-label,
+.lesson-duration-label,
+.lesson-location-label {
+    color: #BF4B53;
 }
 
 .lesson-description {
