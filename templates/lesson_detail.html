@@ -60,6 +60,7 @@
             <h2 class="lesson-title p-2 mt-2">{{ lesson.title }}</h2>
             <p class="lesson-time-label">Start time: <span class="lesson-time">{{ lesson.lesson_time }}</span></p>
             <p class="lesson-duration-label">Duration: <span class="lesson-duration">1 hour</span></p>
+            <p class="lesson-location-label">Location: <span class="lesson-location">{{ lesson.location }}</span></p>
             
             <!-- safe filter is used to make sure the conten is being displayed -->
             <span class="card-text lesson-description">{{ lesson.content | safe }}</span>
