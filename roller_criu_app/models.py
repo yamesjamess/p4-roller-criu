@@ -50,6 +50,7 @@ class Lesson(models.Model):
     slug = models.SlugField(max_length=100, unique=True)
     lesson_time = models.DateTimeField()
     lesson_level = models.CharField(max_length=20, choices=LEVEL_CHOICES, default=BEGINNER)
+    # duration = models.DurationField()
     location = models.CharField(max_length=100)
     content = models.TextField()
     featured_image = CloudinaryField('image', default='placeholder')
