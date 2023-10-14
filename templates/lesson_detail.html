@@ -4,20 +4,36 @@
 
 <div class="masthead">
     <div class="container">
-        <div class="row g-0">
-            <div class="col-md-6 masthead-text">
-                <!-- Post title goes in these h1 tags -->
-                <h1 class="post-title">{{ lesson.title }}
-                </h1>
-                <!-- Post author goes before the | the post's created date goes after -->
-                <p class="post-subtitle">Lesson level: {{ lesson.lesson_level }} | Start: {{ lesson.lesson_time }}</p>
-            </div>
-            <div class="d-none d-md-block col-md-6 masthead-image">
-                <!-- The featured image URL goes in the src attribute -->
+        <div class="row g-3">
+            <div class="d-block col-lg-8 masthead-image img-fluid">
+                <!-- to display placeholder image if feautre image was not uploaded -->
                 {% if "placeholder" in lesson.featured_image.url %}
-                <img src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg" width="100%">
+                <img src="https://res.cloudinary.com/dukqu7lia/image/upload/v1696354385/placeholder.jpg" width="100%" height="100%">
                 {% else %}
                 <img src=" {{ lesson.featured_image.url }} " width="100%">
+                {% endif %}
+            </div>
+            <div class="d-lg-block col-lg-4 masthead-coach">
+                <div class="coach-image d-sm-none d-lg-block m-auto">
+                    {% if "placeholder" in coach.image.url %}
+                    <!-- to display placeholder image if feautre image was not uploaded -->
+                    <img src="https://res.cloudinary.com/dukqu7lia/image/upload/v1697297007/coach_placeholder.png" width="100%">
+                    {% else %}
+                    <img src=" {{ coach.image.url }} " width="100%">
+                    {% endif %}</div>
+                <div class="coach-text m-3">
+                    <h4 class="coach-name">Coach {{ coach.first_name }}</h4>
+                    <p class="specialization">{{ coach.specialization|capfirst }}</p>
+                </div>
+                <!-- only logged in user can press the button -->
+                {% if user.is_authenticated %}
+                <div class="booking-button-container m-1">
+                    <button class="btn btn-lg booking-button rounded-pill">Book this lesson!</button>
+                </div>
+                {% else %}
+                <div class="booking-button-container">
+                    <button class="btn btn-lg booking-button rounded-pill" disabled>Book this lesson!</button>
+                </div>
                 {% endif %}
             </div>
         </div>
@@ -26,13 +42,38 @@
 
 <div class="container">
     <div class="row">
-        <div class="col card mb-4  mt-3 left  top">
-            <div class="card-body">
-                <!-- The post content goes inside the card-text. -->
-                <!-- Use the | safe filter inside the template tags -->
-                <p class="card-text ">{{ lesson.content | safe }}</p>
-                <div class="row">
+        <div class="col-lg-8 lesson-text">
+            <!-- display lesson's level -->
+            {% if lesson.lesson_level == 'beginner'%}
+            <div class="lesson-banner banner-bkgd-beginner">
+                <p class="difficulty">beginner</p>
+            </div>
+            {% elif lesson.lesson_level == 'intermediate'%}
+            <div class="lesson-banner banner-bkgd-intermediate">
+                <p class="difficulty">intermediate</p>
+            </div>
+            {% elif lesson.lesson_level == 'advanced'%}
+            <div class="lesson-banner banner-bkgd-advanced">
+                <p class="difficulty">advanced</p>
+            </div>
+            {% endif %}
+            <h2 class="lesson-title p-2 mt-2">{{ lesson.title }}</h2>
+            <p class="lesson-time-label">Start time: <span class="lesson-time">{{ lesson.lesson_time }}</span></p>
+            <p class="lesson-duration-label">Duration: <span class="lesson-duration">1 hour</span></p>
+            
+            <!-- safe filter is used to make sure the conten is being displayed -->
+            <span class="card-text lesson-description">{{ lesson.content | safe }}</span>
+        </div>
+        
+    </div>
+</div>
 
+<div class="container">
+    <div class="row">
+        <div class="col card mb-4 mt-3 left top">
+            <div class="card-body">
+                <div class="row">
+                    <!-- Likes -->
                     <div class="col-1">
                         <strong>
                             {% if user.is_authenticated %}
@@ -51,10 +92,10 @@
                             <span class="text-secondary">{{ lesson.number_of_likes }}</span>
                         </strong>
                     </div>
+                    <!-- Number of feedbacks -->
                     <div class="col-1">
                         {% with feedbacks.count as total_feedbacks %}
                         <strong class="text-secondary"><i class="far fa-comments"></i>
-                            <!-- Our total_comments variable goes before the closing strong tag -->
                         {{ total_feedbacks }}
                         </strong>
                         {% endwith %}
@@ -63,52 +104,46 @@
             </div>
         </div>
     </div>
+    <!-- horizontal line -->
     <div class="row">
         <div class="col">
             <hr>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-8 card mb-4  mt-3 ">
-            <h3>Comments:</h3>
+        <!-- Feedbacks area -->
+        <div class="col-md-8 card mb-4 mt-3">
+            <h3>Feedbacks:</h3>
             <div class="card-body">
-                <!-- We want a for loop inside the tags to iterate through each comment in comments -->
                 {% for feedback in feedbacks %}
-                <div class="comments" style="padding: 10px;">
+                <div class="feedbacks" style="padding: 10px;">
                     <p class="font-weight-bold">
-                        <!-- The commenter's name goes here. Check the model if you're not sure what that is -->
-                        {{ feedback.name }}
-                        <span class=" text-muted font-weight-normal">
-                            <!-- The comment's created date goes here -->
+                        {{ feedback.username }}
+                        <span class="feedback-time font-weight-normal">
                             {{ feedback.created_on }}
                         </span> wrote:
                     </p>
-                    <!-- The body of the comment goes before the | -->
-                    {{ feedback.body | linebreaks }}
+                {{ feedback.body | linebreaks }}
                 </div>
-                <!-- Our for loop ends here -->
                 {% endfor %}
             </div>
         </div>
+        <!-- Feedback form -->
         <div class="col-md-4 card mb-4  mt-3 ">
             <div class="card-body">
-                <!-- For later -->
                 {% if submitted_feedback %}
                 <div class="alert alert-success" role="alert">
                     Your feedback is waiting approval
                 </div>
                 {% else %}
-
                 {% if user.is_authenticated %}
-
                 <h3>Leave a feedback:</h3>
                 <p>Posting as: {{ user.username }}</p>
-                <form method="post" style="margin-top: 1.3em;">
+                <form method="post" class="feedback-form">
                     {{ feedback_form | crispy }}
                     {% csrf_token %}
-                    <button type="submit" class="btn btn-signup btn-lg">Submit</button>
+                    <button type="submit" class="btn btn-lg btn-form my-3 p-3 rounded-pill">Submit</button>
                 </form>
-
                 {% endif %}
                 {% endif %}
             </div>
