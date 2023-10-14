@@ -16,8 +16,31 @@ a {
     color: #BF4B53;
 }
 
+.navbar-brand {
+    margin-top: 5px;
+}
+
 .navbar {
     background-color: #FFDEDE;
+}
+
+#navbarText {
+    font-size: 1.2rem;
+}
+
+.navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .show>.nav-link {
+    color: #732d32;
+    text-decoration: underline #732d32;
+}
+
+.navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover  {
+    text-decoration: underline #BF4B53;
+    color: #BF4B53;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: #BF4B53;
+    font-weight: 700;
 }
 
 .brand > img {
