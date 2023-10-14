@@ -70,7 +70,6 @@ a {
     top: 5%;
     min-width: 30%;
     left: 0;
-;
 }
 
 .banner-bkgd-beginner{
@@ -91,4 +90,119 @@ a {
     margin: 0.5rem;
     text-transform: uppercase;
     text-align: center;
+}
+
+/* Lesson Detail */
+
+.masthead {
+    margin-top: 1.5%;
+    overflow: hidden;
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.masthead-coach{
+    overflow: hidden;
+    position: relative;
+    display: inline-block;
+}
+
+
+.masthead-image {
+    position: relative;
+    overflow: hidden;
+}
+
+.coach-image {
+    max-width: 250px;
+    max-height: 250px;
+}
+
+.coach-text {
+    text-align: center;
+}
+
+.coach-text .specialization {
+    font-size: 1.2em;
+}
+
+.booking-button-container {
+    display: flex;
+    justify-content: center;
+}
+
+.booking-button {
+    background-color: #FFDEDE;
+    color: #BF4B53;
+    font-weight: 700;
+    outline: 0.5px solid #000000E6;
+}
+
+.booking-button:hover{
+    color: #732d32;
+    outline: 0.5px solid white;
+}
+
+.lesson-text {
+    color: #BF4B53;
+    position: relative;
+    padding-right: 9px;
+}
+
+.lesson-text > h2{
+    text-align: center;
+}
+
+.lesson-banner > p{
+    margin: 0;
+    padding: 2%;
+    font-weight: 700;
+    font-size: 1.3em;
+}
+
+.lesson-time,
+.lesson-duration {
+    color: #000000E6;
+}
+
+.lesson-description {
+    color: #000000E6;
+}
+
+.card {
+    border: none;
+    background-color: transparent;
+}
+
+.btn-like {
+    color: #BF4B53;
+    border: none;
+    background: transparent;
+}
+
+.btn-like:hover,
+.btn-like:active {
+    color: #BF4B53;
+    background: transparent;
+    border: none;
+}
+
+.feedback-time {
+    color: #BF4B53;
+}
+
+.btn-form {
+    background-color: #FFDEDE;
+    font-size: 1rem;
+    font-weight: bold;
+    line-height: 1.25rem;
+    color: #BF4B53;
+    width: 100%;
+    outline: 0.5px solid #000000E6;
+}
+
+.btn-form:hover {
+    color: #732d32;
+    outline: 0.5px solid white;
 }
