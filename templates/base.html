@@ -1,7 +1,7 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html lang="en" class="h-100">
+<html lang="en" class="h-100 container">
 
 <head>
     <title>Roller Criú</title>
@@ -37,11 +37,10 @@
     <!-- Navigation -->
 
     <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container-fluid">
+        <div class="container">
             <a class="navbar-brand" href="{% url 'home' %}">
                 <span class="brand">
-                    <img src="{% static 'media/logo.png' %}" alt="">
-                    Roller Criú
+                    <img src="{% static 'media/logo.png' %}" alt="">Roller Criú
                 </span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
@@ -56,11 +55,7 @@
                     </li>
                     <li class="nav-item">
                         <a {% if 'about' == request.path %} class="nav-link active" aria-current="page" {% else %}
-                            class="nav-link" {% endif %} href="{% url 'home' %}">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a {% if 'all_lesssons' == request.path %} class="nav-link active" aria-current="page"
-                            {% else %} class="nav-link" {% endif %} href="#">All Lessons</a>
+                            class="nav-link" {% endif %} href="{% url 'about' %}">About</a>
                     </li>
                     <li class="nav-item">
                         <a {% if 'contact' == request.path %} class="nav-link active" aria-current="page" {% else %}
