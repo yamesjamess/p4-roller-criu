@@ -8,7 +8,8 @@
             <div class="d-block col-lg-8 masthead-image img-fluid">
                 <!-- to display placeholder image if feautre image was not uploaded -->
                 {% if "placeholder" in lesson.featured_image.url %}
-                <img src="https://res.cloudinary.com/dukqu7lia/image/upload/v1696354385/placeholder.jpg" width="100%" height="100%">
+                <img src="https://res.cloudinary.com/dukqu7lia/image/upload/v1696354385/placeholder.jpg" width="100%"
+                    height="100%">
                 {% else %}
                 <img src=" {{ lesson.featured_image.url }} " width="100%">
                 {% endif %}
@@ -17,7 +18,8 @@
                 <div class="coach-image d-sm-none d-lg-block m-auto">
                     {% if "placeholder" in coach.image.url %}
                     <!-- to display placeholder image if feautre image was not uploaded -->
-                    <img src="https://res.cloudinary.com/dukqu7lia/image/upload/v1697297007/coach_placeholder.png" width="100%">
+                    <img src="https://res.cloudinary.com/dukqu7lia/image/upload/v1697297007/coach_placeholder.png"
+                        width="100%">
                     {% else %}
                     <img src=" {{ coach.image.url }} " width="100%">
                     {% endif %}</div>
@@ -61,11 +63,11 @@
             <p class="lesson-time-label">Start time: <span class="lesson-time">{{ lesson.lesson_time }}</span></p>
             <p class="lesson-duration-label">Duration: <span class="lesson-duration">1 hour</span></p>
             <p class="lesson-location-label">Location: <span class="lesson-location">{{ lesson.location }}</span></p>
-            
+
             <!-- safe filter is used to make sure the conten is being displayed -->
             <span class="card-text lesson-description">{{ lesson.content | safe }}</span>
         </div>
-        
+
     </div>
 </div>
 
@@ -81,9 +83,11 @@
                             <form class="d-inline" action="{% url 'lesson_like' lesson.slug %}" method="POST">
                                 {% csrf_token %}
                                 {% if liked %}
-                                <button type="submit" name="lesson_id" value="{{lesson.slug}}" class="btn-like"><i class="fas fa-heart"></i></button>
+                                <button type="submit" name="lesson_id" value="{{lesson.slug}}" class="btn-like"><i
+                                        class="fas fa-heart"></i></button>
                                 {% else %}
-                                <button type="submit" name="lesson_id" value="{{lesson.slug}}" class="btn-like"><i class="far fa-heart"></i></button>
+                                <button type="submit" name="lesson_id" value="{{lesson.slug}}" class="btn-like"><i
+                                        class="far fa-heart"></i></button>
                                 {% endif %}
                             </form>
                             {% else %}
@@ -97,7 +101,7 @@
                     <div class="col-1">
                         {% with feedbacks.count as total_feedbacks %}
                         <strong class="text-secondary"><i class="far fa-comments"></i>
-                        {{ total_feedbacks }}
+                            {{ total_feedbacks }}
                         </strong>
                         {% endwith %}
                     </div>
@@ -124,7 +128,7 @@
                             {{ feedback.created_on }}
                         </span> wrote:
                     </p>
-                {{ feedback.body | linebreaks }}
+                    {{ feedback.body | linebreaks }}
                 </div>
                 {% endfor %}
             </div>
