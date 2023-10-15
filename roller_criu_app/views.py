@@ -12,6 +12,13 @@ class LessonList(generic.ListView):
     paginate_by = 6
 
 
+class About(generic.ListView):
+    model = Coach
+    queryset = Coach.objects.filter(status=1).order_by('first_name')
+    template_name = 'about.html'
+    paginate_by = 6
+
+
 class LessonDetail(View):
 
     def get(self, request, slug, *args, **kwargs):
@@ -80,4 +87,5 @@ class LessonLike(View):
             lesson.likes.add(request.user)
 
         return HttpResponseRedirect(reverse('lesson_detail', args=[slug]))
+
 
