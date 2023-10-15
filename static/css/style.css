@@ -1,4 +1,9 @@
 /* BASE */
+* {
+    *, *::before, *::after {
+        caret-color: transparent;
+    }
+}
 
 body {
     background-color: #F9FAFC;
@@ -7,6 +12,11 @@ body {
 
 a {
     text-decoration: none;
+}
+
+a:hover {
+    color: #BF4B53;
+    text-decoration: underline;
 }
 
 .brand {
@@ -33,9 +43,13 @@ a {
     text-decoration: underline #732d32;
 }
 
-.navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover  {
+.navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
     text-decoration: underline #BF4B53;
     color: #BF4B53;
+}
+
+.navbar-light .navbar-brand:focus, .navbar-light .navbar-brand:hover {
+    text-decoration: none;
 }
 
 .navbar-light .navbar-nav .nav-link {
@@ -67,7 +81,7 @@ a {
 
 /* INDEX */
 
-.jumbotron {
+.hero-image {
     background-image: url('https://res.cloudinary.com/dukqu7lia/image/upload/v1697231665/index_hero.jpg');
     background-size: cover;
     background-position: center 80%;
@@ -190,13 +204,15 @@ a {
 
 .lesson-time,
 .lesson-duration,
-.lesson-location {
+.lesson-location,
+.coach-specialization {
     color: #000000E6;
 }
 
 .lesson-time-label,
 .lesson-duration-label,
-.lesson-location-label {
+.lesson-location-label,
+.coach-specialization-label {
     color: #BF4B53;
 }
 
@@ -240,3 +256,25 @@ a {
     color: #732d32;
     outline: 0.5px solid white;
 }
+
+/* About page */
+
+.welcome-about {
+    text-align: center;
+    background-color: rgb(255, 222, 222);
+    margin: 0 15%;
+    padding: 2%;
+}
+
+.about-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.about-coach-heading,
+.about-coach-name {
+    text-align: center;
+}
+
+{}
