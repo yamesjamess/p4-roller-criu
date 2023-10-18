@@ -22,7 +22,7 @@ class Coach(models.Model):
     last_name = models.CharField(max_length=80)
     email = models.EmailField(max_length=100)
     bio = models.CharField(max_length=140, help_text="Enter a brief bio")
-    image = CloudinaryField('image', default='placeholder')
+    image = CloudinaryField('image', default='placeholder', help_text="Image must be a square")
     specialization = models.CharField(max_length=20, choices=SPECIALIZATION_CHOICES, default=RECREATIONAL)
     years_of_experience = models.PositiveIntegerField(default='1', help_text="Enter a positive integer.")
     status = models.IntegerField(choices=STATUS, default=0)
@@ -48,20 +48,20 @@ class Lesson(models.Model):
 
     title = models.CharField(max_length=100, unique=True)
     slug = models.SlugField(max_length=100, unique=True)
-    lesson_time = models.DateTimeField()
+    lesson_start = models.DateTimeField()
     lesson_level = models.CharField(max_length=20, choices=LEVEL_CHOICES, default=BEGINNER)
-    # duration = models.DurationField()
+    duration = models.DurationField()
     location = models.CharField(max_length=100)
+    coach = models.ForeignKey(Coach, on_delete=models.CASCADE, related_name='lesson_coach')
     content = models.TextField()
     featured_image = CloudinaryField('image', default='placeholder')
     status = models.IntegerField(choices=STATUS, default=0)
     likes = models.ManyToManyField(User, related_name='lesson_likes', blank=True)
-    coach = models.ForeignKey(Coach, on_delete=models.DO_NOTHING, related_name='lesson_coach')
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
 
     class Meta:
-        ordering = ['lesson_time']
+        ordering = ['lesson_start']
 
     def __str__(self):
         return self.title
@@ -92,3 +92,16 @@ class Booking(models.Model):
 
     def __str__(self):
         return f'{self.lesson} is booked by {self.username}'
+
+
+class Contact(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    contact_message = models.TextField()
+    created_on = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['created_on']
+
+    def __str__(self):
+        return f'Contact message submitted by {self.name} on {self.created_on}'
