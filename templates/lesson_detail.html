@@ -19,28 +19,78 @@
                     {% if "placeholder" in coach.image.url %}
                     <!-- to display placeholder image if feautre image was not uploaded -->
                     <img src="https://res.cloudinary.com/dukqu7lia/image/upload/v1697297007/coach_placeholder.png"
-                        width="100%">
+                        class="img" width="100%">
                     {% else %}
-                    <img src=" {{ coach.image.url }} " width="100%">
+                    <img class="img-fluid coach-image" src=" {{ coach.image.url }} " width="100%">
                     {% endif %}</div>
-                <div class="coach-text m-3">
+                <div class="d-lg-block coach-text m-3">
                     <h4 class="coach-name">Coach {{ coach.first_name }}</h4>
                     <p class="specialization">{{ coach.specialization|capfirst }}</p>
                 </div>
                 <!-- only logged in user can press the button -->
                 {% if user.is_authenticated %}
                 <div class="booking-button-container m-1">
-                    <button class="btn btn-lg booking-button rounded-pill">Book this lesson!</button>
+                    <button class="btn btn-lg booking-button rounded-pill" data-bs-toggle="modal" data-bs-target="#bookingModal">Book this lesson!</button>
                 </div>
                 {% else %}
                 <div class="booking-button-container">
-                    <button class="btn btn-lg booking-button rounded-pill" disabled>Book this lesson!</button>
+                    <button class="btn btn-lg booking-button rounded-pill" data-bs-toggle="modal" data-bs-target="#bookingModal">Book this lesson!</button>
                 </div>
                 {% endif %}
             </div>
         </div>
     </div>
 </div>
+
+<!-- Booking Modal -->
+<div class="modal fade" id="bookingModal" tabindex="-1" role="dialog" aria-labelledby="bookingModalLabel" aria-hidden="True">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content p-3">
+        <div class="modal-header">
+          <h5 class="bookingModalLabel" id="bookingModalLabel">Request a Booking</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+          </button>
+        </div>
+        {% if user.is_authenticated %}
+        <div class="modal-body">
+          <form action="#" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="user_id" value="{{ user.id }}">
+            <input type="hidden" name="coach_email" value="{{ lesson.coach.email }}">
+
+            <div class="form-group">
+              <label for="lesson_name" class="col-form-label">Lesson:</label>
+              <input type="text" name="lesson" class="form-control" value="{{ lesson.title }}" disabled>
+            </div>
+            <div class="form-group">
+              <label for="name" class="col-form-label">Username:</label>
+              <input type="text" name="name" class="form-control" value="{{ user.username }}">
+            </div>
+            <div class="form-group">
+              <label for="email" class="col-form-label">Email:</label>
+              <input type="email" name="email" class="form-control" value="{{ user.email }}"required>
+            </div>
+            <div class="form-group">
+              <label for="phone" class="col-form-label">Phone:</label>
+              <input type="text" name="phone" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="message" class="col-form-label">Message:</label>
+              <textarea name="message" class="form-control"></textarea>
+            </div>
+            <div class="modal-footer mt-3">
+                <button type="submit" class="btn btn-lg booking-button rounded-pill px-5">Book!</button>
+            </div>
+          </form>
+        </div>
+        {% else %}
+        <div class="modal-body">
+            <h5>You must log in to your account to make a booking!</h5>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
 
 <div class="container">
     <div class="row">
@@ -60,8 +110,8 @@
             </div>
             {% endif %}
             <h2 class="lesson-title p-2 mt-2">{{ lesson.title }}</h2>
-            <p class="lesson-time-label">Start time: <span class="lesson-time">{{ lesson.lesson_time }}</span></p>
-            <p class="lesson-duration-label">Duration: <span class="lesson-duration">1 hour</span></p>
+            <p class="lesson-time-label">Start time: <span class="lesson-time">{{ lesson.lesson_start }}</span></p>
+            <p class="lesson-duration-label">Duration: <span class="lesson-duration">{{ lesson.duration }}</span></p>
             <p class="lesson-location-label">Location: <span class="lesson-location">{{ lesson.location }}</span></p>
 
             <!-- safe filter is used to make sure the conten is being displayed -->
