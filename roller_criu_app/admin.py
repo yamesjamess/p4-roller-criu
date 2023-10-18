@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Coach, Lesson, Feedback, Booking
+from .models import Coach, Lesson, Feedback, Booking, Contact
 from django_summernote.admin import SummernoteModelAdmin
 
 
@@ -16,7 +16,7 @@ class CoachAdmin(SummernoteModelAdmin):
 class LessonAdmin(SummernoteModelAdmin):
 
     list_filter = ('status', 'created_on')
-    list_display = ('pk', 'title', 'slug', 'coach', 'lesson_time', 'created_on', 'status')
+    list_display = ('pk', 'title', 'slug', 'coach', 'lesson_start', 'created_on', 'status')
     search_fields = ['title', 'content']
     prepopulated_fields = {'slug': ('title',)}
     summernote_fields = ('content')
@@ -42,7 +42,7 @@ class BookingAdmin(admin.ModelAdmin):
 
     list_display = ('lesson', 'username', 'approved')
     list_filter = ('lesson', 'approved')
-    search_fields =('lesson', 'approved')
+    search_fields = ('lesson', 'approved')
     actions = ['approve_booking', 'unapprove_booking']
 
     def approve_booking(self, request, queryset):
@@ -50,3 +50,13 @@ class BookingAdmin(admin.ModelAdmin):
 
     def unapprove_booking(self, request, queryset):
         queryset.update(approved=False)
+
+
+@admin.register(Contact)
+class ContactAdmin(admin.ModelAdmin):
+
+    list_display = ('name', 'email', 'contact_message', 'created_on')
+    list_filter = ('name', 'email', 'created_on')
+    search_fields = ('name', 'email', 'contact_message', 'created_on')
+
+
