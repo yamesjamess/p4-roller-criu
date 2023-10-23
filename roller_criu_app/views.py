@@ -5,6 +5,7 @@ from django.http import HttpResponseRedirect
 from django.contrib import messages
 from django.contrib.auth import get_user
 from django.urls import reverse_lazy
+from django.utils import timezone
 from .models import Lesson, Coach, Feedback, Contact, Booking
 from .forms import FeedbackForm, ContactForm, BookingForm
 
@@ -141,28 +142,36 @@ class LessonLike(View):
         return HttpResponseRedirect(reverse('lesson_detail', args=[slug]))
 
 
-class LessonMyBookings(View):
+class MyBookings(View):
 
     def get(self, request, *args, **kwargs):
-        bookings = Booking.objects.filter(username=self.request.user).filter(
-            lesson__starts__gt=datetime.datetime.new(
-                pytz.utc)).order_by('lesson__starts')
-        past_bookings = Booking.objects.filter(username=self.request.user).filter(
-            lesson__starts__lte=datetime.datetime.now(pytz.utc)).order_by('lesson__starts')
+        user = request.user
+        current_time = timezone.now()
 
+        future_bookings = Booking.objects.filter(username=user,
+            lesson__lesson_start__gt=current_time)
+        past_bookings = Booking.objects.filter(username=user,
+            lesson__lesson_start__lte=current_time) 
         return render(
             request,
-            "lesson_mybookings.html",
+            "my_bookings.html",
             {
-                "bookings": bookings,
+                "future_bookings": future_bookings,
                 "past_bookings": past_bookings,
-            }
+            },
         )
 
     def post(self, request, *args, **kwargs):
-        id = request.POST.get('cancel_booking_id')
-        booking = get_object_or_404(Booking, id=id)
-        booking.delete()
+        booking_id = request.POST.get('booking_id')
+        if booking_id:
+            # Find the booking with the provided ID
+            booking = Booking.objects.filter(id=booking_id).first()
 
-        messages.success(request, 'Your booking has been cancelled.')
-        return HttpResponseRedirect(reverse('lesson_mybookings'))
+            if booking and booking.username == request.user:
+                # Cancel the booking
+                booking.delete()
+                messages.success(request, 'Booking canceled successfully.')
+            else:
+                messages.error(request, 'Unable to cancel the booking.')
+                
+        return HttpResponseRedirect(reverse('my_bookings'))
