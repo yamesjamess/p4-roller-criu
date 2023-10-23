@@ -26,15 +26,15 @@
                                 {% else %}
                                 <img class="card-img-top" src=" {{ lesson.featured_image.url }} ">
                                 {% endif %}
-                                {% if lesson.lesson_level == 'beginner'%}
+                                {% if lesson.lesson_level == 'beginner' %}
                                 <div class="image-banner banner-bkgd-beginner">
                                     <p class="difficulty">beginner</p>
                                 </div>
-                                {% elif lesson.lesson_level == 'intermediate'%}
+                                {% elif lesson.lesson_level == 'intermediate' %}
                                 <div class="image-banner banner-bkgd-intermediate">
                                     <p class="difficulty">intermediate</p>
                                 </div>
-                                {% elif lesson.lesson_level == 'advanced'%}
+                                {% elif lesson.lesson_level == 'advanced' %}
                                 <div class="image-banner banner-bkgd-advanced">
                                     <p class="difficulty">advanced</p>
                                 </div>
