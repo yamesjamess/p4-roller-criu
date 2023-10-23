@@ -259,7 +259,8 @@ a:hover {
 
 /* About page */
 
-.welcome-about {
+.welcome-about,
+.welcome-contact {
     text-align: center;
     background-color: rgb(255, 222, 222);
     margin: 0 15%;
@@ -277,4 +278,9 @@ a:hover {
     text-align: center;
 }
 
-{}
+/* Contact Page */
+
+#div_id_email,
+#div_id_contact_message {
+    margin-top: 1.5rem;
+}
