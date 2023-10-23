@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
+from django.core.validators import MinValueValidator
 
 STATUS = ((0, "Draft"), (1, "Published"))
 
@@ -48,9 +49,9 @@ class Lesson(models.Model):
 
     title = models.CharField(max_length=100, unique=True)
     slug = models.SlugField(max_length=100, unique=True)
-    lesson_start = models.DateTimeField()
+    lesson_start = models.DateTimeField(help_text="Date: YYYY-MM-DD Time: HH:MM:SS")
     lesson_level = models.CharField(max_length=20, choices=LEVEL_CHOICES, default=BEGINNER)
-    duration = models.DurationField()
+    duration = models.DurationField(help_text="Format HH:MM:SS")
     location = models.CharField(max_length=100)
     coach = models.ForeignKey(Coach, on_delete=models.CASCADE, related_name='lesson_coach')
     content = models.TextField()
@@ -88,6 +89,7 @@ class Feedback(models.Model):
 class Booking(models.Model):
     lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE, related_name='lesson_bookings')
     username = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user_bookings')
+    places_reserved = models.IntegerField(validators=[MinValueValidator(1), ])
     approved = models.BooleanField(default=False)
 
     def __str__(self):
