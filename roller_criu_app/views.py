@@ -3,9 +3,10 @@ from django.views import generic, View
 from django.views.generic.edit import CreateView
 from django.http import HttpResponseRedirect
 from django.contrib import messages
+from django.contrib.auth import get_user
 from django.urls import reverse_lazy
-from .models import Lesson, Coach, Feedback, Contact
-from .forms import FeedbackForm, ContactForm
+from .models import Lesson, Coach, Feedback, Contact, Booking
+from .forms import FeedbackForm, ContactForm, BookingForm
 
 
 class LessonList(generic.ListView):
@@ -36,7 +37,15 @@ class LessonDetail(View):
         lesson = get_object_or_404(queryset, slug=slug)
         coach = lesson.coach
         feedbacks = lesson.feedbacks.filter(approved=True).order_by('-created_on')
+        user = get_user(request)
+        has_booking = False
         liked = False
+
+        booking_form = BookingForm()
+
+        if user.is_authenticated:
+            has_booking = self.user_has_booked(user, lesson)
+
         if lesson.likes.filter(id=self.request.user.id).exists():
             liked = True
 
@@ -49,7 +58,9 @@ class LessonDetail(View):
                 "coach": coach,
                 "submitted_feedback": False,
                 "liked": liked,
+                "has_booking": has_booking,
                 "feedback_form": FeedbackForm(),
+                "booking_form": booking_form,
             },
         )
 
@@ -59,20 +70,44 @@ class LessonDetail(View):
         coach = lesson.coach
         feedbacks = lesson.feedbacks.filter(approved=True).order_by('-created_on')
         liked = False
+        booking_form = BookingForm()
+        user = get_user(request)
+        submitted_feedback = False
+        submitted_booking = False
+        
         if lesson.likes.filter(id=self.request.user.id).exists():
             liked = True
 
-        feedback_form = FeedbackForm(data=request.POST)
+        if user.is_authenticated:
+            has_booking = self.user_has_booked(user, lesson)
+            if has_booking:
+                # User has already made a booking, return an error response
+                messages.error(request, "You have already booked this lesson! Please check My Bookings page.")
+            else:
+                feedback_form = FeedbackForm(data=request.POST)
+                booking_form = BookingForm(data=request.POST)
 
-        if feedback_form.is_valid():
-            feedback_form.instance.email = request.user.email
-            feedback_form.instance.name = request.user.username
-            feedback_form.instance.username_id = request.user.id
-            feedback = feedback_form.save(commit=False)
-            feedback.lesson = lesson
-            feedback.save()
-        else:
-            feedback_form = FeedbackForm()
+                if feedback_form.is_valid():
+                    feedback_form.instance.email = request.user.email
+                    feedback_form.instance.name = request.user.username
+                    feedback_form.instance.username_id = request.user.id
+                    feedback = feedback_form.save(commit=False)
+                    feedback.lesson = lesson
+                    feedback.save()
+                    submitted_feedback = True
+                else:
+                    feedback_form = FeedbackForm()
+
+                if booking_form.is_valid():
+                    booking = booking_form.save(commit=False)
+                    booking.lesson = lesson
+                    booking.username = request.user
+                    booking.save()
+                    submitted_booking = True
+                    messages.success(request, 'Thank you for your booking request!')
+                else:
+                    booking_form = BookingForm()
+                    print("booking failed")
 
         return render(
             request,
@@ -81,11 +116,16 @@ class LessonDetail(View):
                 "lesson": lesson,
                 "feedbacks": feedbacks,
                 "coach": coach,
-                "submitted_feedback": True,
+                "submitted_feedback": submitted_feedback,
+                "submitted_booking": submitted_booking,
+                "liked": liked,
                 "feedback_form": FeedbackForm(),
-                "liked": liked
+                "booking_form": booking_form,
             },
         )
+
+    def user_has_booked(self, user, lesson):
+        return Booking.objects.filter(lesson=lesson, username=user).exists()
 
 
 class LessonLike(View):
