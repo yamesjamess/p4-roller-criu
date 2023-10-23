@@ -30,6 +30,7 @@ class Coach(models.Model):
 
     class Meta:
         ordering = ['pk']
+        verbose_name_plural = 'Coaches'
 
     def __str__(self):
         return f'Coach {self.first_name} {self.last_name}'
@@ -51,7 +52,7 @@ class Lesson(models.Model):
     slug = models.SlugField(max_length=100, unique=True)
     lesson_start = models.DateTimeField(help_text="Date: YYYY-MM-DD Time: HH:MM:SS")
     lesson_level = models.CharField(max_length=20, choices=LEVEL_CHOICES, default=BEGINNER)
-    duration = models.DurationField(help_text="Format HH:MM:SS")
+    duration = models.DurationField(help_text="Format HH:MM:SS", default='01:00:00')
     location = models.CharField(max_length=100)
     coach = models.ForeignKey(Coach, on_delete=models.CASCADE, related_name='lesson_coach')
     content = models.TextField()
@@ -87,10 +88,16 @@ class Feedback(models.Model):
 
 
 class Booking(models.Model):
+    APPROVAL_CHOICES = (
+        ('approved', 'Approved'),
+        ('pending', 'Pending'),
+        ('not_approved', 'Not Approved'),
+    )
+
     lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE, related_name='lesson_bookings')
     username = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user_bookings')
     places_reserved = models.IntegerField(validators=[MinValueValidator(1), ])
-    approved = models.BooleanField(default=False)
+    approved = models.CharField(max_length=12, choices=APPROVAL_CHOICES, default='pending')
 
     def __str__(self):
         return f'{self.lesson} is booked by {self.username}'
@@ -104,6 +111,7 @@ class Contact(models.Model):
 
     class Meta:
         ordering = ['created_on']
+        verbose_name_plural = 'Contact Messages'
 
     def __str__(self):
         return f'Contact message submitted by {self.name} on {self.created_on}'
