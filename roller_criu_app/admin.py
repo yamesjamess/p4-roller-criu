@@ -50,10 +50,10 @@ class BookingAdmin(admin.ModelAdmin):
     actions = ['approve_booking', 'unapprove_booking']
 
     def approve_booking(self, request, queryset):
-        queryset.update(approved=True)
+        queryset.update(approved='approved')
 
     def unapprove_booking(self, request, queryset):
-        queryset.update(approved=False)
+        queryset.update(approved='not_approved')
 
 
 @admin.register(Contact)
