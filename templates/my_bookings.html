@@ -17,7 +17,7 @@
         <div class="card-body">
             {% if future_bookings %}
             {% for booking in future_bookings %}
-            <div class="booking-details booking-card my-2">
+            <div class="booking-details booking-card my-4">
                 <div class="row justify-content-center align-items-center flex-lg-row">
                     <div class="col-auto booking-img-container">
                         <a href="{% url 'lesson_detail' booking.lesson.slug %}" class="lesson-link">
@@ -96,7 +96,7 @@
         <div class="card-body">
             {% if past_bookings %}
             {% for booking in past_bookings %}
-            <div class="booking-details booking-card my-2">
+            <div class="booking-details booking-card my-4">
                 <div class="row justify-content-center align-items-center flex-lg-row">
                     <div class="col-auto booking-img-container">
                         <a href="{% url 'lesson_detail' booking.lesson.slug %}" class="lesson-link">
