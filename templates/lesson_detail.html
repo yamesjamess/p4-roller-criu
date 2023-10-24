@@ -30,7 +30,12 @@
                     <p class="specialization">{{ coach.specialization|capfirst }}</p>
                 </div>
                 {% if user.is_authenticated %}
-                    {% if not has_booking %}
+                    {% now "jS M Y, H:i A" as current_time %}
+                    {% if lesson.lesson_start|date:"jS M Y, H:i a" < current_time %}
+                        <h5>This lesson has started. You can no longer book this lesson.</h5>
+                        <button type="submit" class="btn btn-lg booking-button rounded-pill px-5" disabled>Book!</button> 
+                    {% else %}
+                        {% if not has_booking %}
                         <div class="masthead-booking">
                             <h5>Booking for: </h5>
                             <p>{{ user.username }}</p>
@@ -45,12 +50,13 @@
                                 <button type="submit" id="booking-button" class="btn btn-lg booking-button rounded-pill px-5">Book!</button>
                             </form>
                         </div>
-                    {% else %}
+                        {% else %}
                         <div class="masthead-booking">
                             <h5>You have already submitted a booking this class!</h5>
                             <p>Please check <strong>'My Bookings'</strong> for booking status</p>
                             <button type="submit" class="btn btn-lg booking-button rounded-pill px-5" disabled>Book!</button>
                         </div>
+                        {% endif %}
                     {% endif %}
                 {% else %}
                     <div class="masthead-booking">
@@ -80,10 +86,10 @@
                 <p class="difficulty">advanced</p>
             </div>
             {% endif %}
-            <h2 class="lesson-title p-2 mt-2">{{ lesson.title }}</h2>
-            <p class="lesson-time-label">Start time: <span class="lesson-time">{{ lesson.lesson_start }}</span></p>
+            <h2 class="lesson-title p-2 mt-2">{{ lesson.title|title }}</h2>
+            <p class="lesson-time-label">Start time: <span class="lesson-time">{{ lesson.lesson_start|date:"jS M Y, H:i a" }}</span></p>
             <p class="lesson-duration-label">Duration: <span class="lesson-duration">{{ lesson.duration }}</span></p>
-            <p class="lesson-location-label">Location: <span class="lesson-location">{{ lesson.location }}</span></p>
+            <p class="lesson-location-label">Location: <span class="lesson-location">{{ lesson.location|title }}</span></p>
 
             <!-- safe filter is used to make sure the conten is being displayed -->
             <span class="card-text lesson-description">{{ lesson.content | safe }}</span>
