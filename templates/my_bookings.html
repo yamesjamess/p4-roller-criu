@@ -1,0 +1,51 @@
+{% extends 'base.html' %} 
+{% load static %}
+{% block content %}
+
+<div class="container">
+    <h1 class="mt-5">My Bookings</h1>
+
+    <div class="row mt-4 booking-title">
+        <div class="col-md-6">
+            <h3>Upcoming Bookings</h3>
+            {% if future_bookings %}
+                <ul class="list-group">
+                    {% for booking in future_bookings %}
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            {{ booking.lesson.title }} - {{ booking.lesson.lesson_start|date:"jS M Y, H:i A" }}
+                            {% if booking.approved == 'approved' %}
+                            <span class="badge bg-success">Approved!</span>
+                            {% elif booking.approved == 'pending' %}
+                            <span class="badge bg-warning">Pending</span>
+                            {% elif booking.approved == 'not_approved' %}
+                            <span class="badge bg-danger">Not Approved</span>
+                            {% endif %}
+                            <form method="post" action="{% url 'my_bookings' %}">
+                                {% csrf_token %}
+                                <input type="hidden" name="booking_id" value="{{ booking.id }}">
+                                <button type="submit" class="btn btn-danger btn-sm">Cancel</button>
+                            </form>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No upcoming bookings.</p>
+            {% endif %}
+        </div>
+        <hr>
+        <div class="col-md-6">
+            <h2>Past Bookings</h2>
+            {% if past_bookings %}
+                <ul class="list-group">
+                    {% for booking in past_bookings %}
+                        <li class="list-group-item">{{ booking.lesson.title }} - {{ booking.lesson.lesson_start|date:"F j, Y, H:i A" }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No past bookings.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
