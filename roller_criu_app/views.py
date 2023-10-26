@@ -4,6 +4,7 @@ from django.views.generic.edit import CreateView
 from django.http import HttpResponseRedirect
 from django.contrib import messages
 from django.contrib.auth import get_user
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.utils import timezone
 from .models import Lesson, Coach, Feedback, Contact, Booking
@@ -128,7 +129,7 @@ class LessonDetail(View):
         return Booking.objects.filter(lesson=lesson, username=user).exists()
 
 
-class LessonLike(View):
+class LessonLike(LoginRequiredMixin, View):
 
     def post(self, request, slug, *args, **kwargs):
         lesson = get_object_or_404(Lesson, slug=slug)
@@ -141,7 +142,7 @@ class LessonLike(View):
         return HttpResponseRedirect(reverse('lesson_detail', args=[slug]))
 
 
-class MyBookings(View):
+class MyBookings(LoginRequiredMixin, View):
 
     def get(self, request, *args, **kwargs):
         user = request.user
