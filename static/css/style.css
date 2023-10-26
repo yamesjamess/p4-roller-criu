@@ -364,7 +364,7 @@ a:hover {
 /* Sign up, Login, Sign out*/
 
 .btn-signup {
-    background-color: #FFDEDE;
+    background-color: rgb(255, 222, 222);
     font-size: 1rem;
     font-weight: bold;
     line-height: 1.25rem;
@@ -376,4 +376,13 @@ a:hover {
 .btn-signup:hover {
     color: #732d32;
     outline: 0.5px solid white;
+}
+
+.errorlist {
+    padding-bottom: 1em;
+    max-width: fit-content;
+    text-align: center;
+    color: #dc3545;
+    list-style-type: none;
+    font-weight: bold;
 }
