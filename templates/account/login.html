@@ -7,7 +7,7 @@
 
 {% block content %}
 
-<div class="container">
+<div class="container-fluid">
   <div class="row">
     <div class="col-md-8 mt-3 offset-md-2">
       <h3>{% trans "Sign In" %}</h3>
@@ -15,9 +15,9 @@
       <p>
       {% blocktrans %}
       Welcome to Roller Criú. To book a lesson, leave a feedback, 
-      or like a lesson, please <a href="{{ login_url }}">sign in</a>. 
+      or like a lesson, please <span class="highlighted-text">sign in</span>. 
       If you have not created an account yet, then please
-      <a href="{{ signup_url }}">Register</a>
+      <a href="{{ signup_url }}">"Register"</a>
       {% endblocktrans %}
       </p>
     </div>
@@ -30,7 +30,7 @@
         {% if redirect_field_value %}
         <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
         {% endif %}
-        <button class="btn btn-signup right" type="submit">{% trans "Sign In" %}</button>
+        <button class="btn btn-signup right btn-lg p-3 rounded-pill" type="submit">{% trans "Sign In" %}</button>
       </form>
     </div>
   </div>
