@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<div class="container">
+<div class="container-fluid">
     <!-- jumbotron for introduction message -->
     <div class="jumbotron hero-image">
         <div class="introduction-text">
@@ -40,7 +40,7 @@
                                 </div>
                                 {% endif %}
                                 <a href="{% url 'lesson_detail' lesson.slug %}" class="lesson-link">
-                                    <h2 class="card-title">{{ lesson.title|title }}</h2>
+                                    <h2 class="card-title mt-2">{{ lesson.title|title }}</h2>
                                 </a>
                                 <p class="card-text lesson-time-label">Lesson Time: <span
                                         class="lesson-time">{{ lesson.lesson_start|date:"jS M Y, H:i a" }}</span></p>
