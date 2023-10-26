@@ -1,0 +1,58 @@
+/* Admin site */
+
+#head > img {
+    max-width: 50px;
+}
+
+#branding h1, .colMS h1{
+    color: #BF4B53; 
+}
+
+#header {
+    height: 50px;
+    background: #FFDEDE;
+    color: #BF4B53;
+}
+
+#header a:link, #header a:visited, a.section:link, a.section:visited {
+    color: #BF4B53;
+}
+
+#user-tools a:focus, #user-tools a:hover {
+    text-decoration: none;
+    border-bottom-color: #BF4B53;
+}
+
+.module h2, .module caption, .inline-group h2 {
+    background: #FFDEDE;
+}
+
+a:visited, a:link {
+    color: #000000E6;
+}
+
+div.breadcrumbs {
+    background: #BF4B53;
+}
+
+.button, input[type=submit], input[type=button], .submit-row input, a.button {
+    background: #FFDEDE;
+    color: #000000E6;
+}
+
+.button:active, input[type=submit]:active, input[type=button]:active, .button:focus, input[type=submit]:focus, input[type=button]:focus, .button:hover, input[type=submit]:hover, input[type=button]:hover {
+    background: #BF4B53;
+}
+
+.button.default, input[type=submit].default, .submit-row input.default {
+    background: #FFDEDE;
+    outline: 1px solid #BF4B53;
+}
+
+.button.default:active, input[type=submit].default:active, .button.default:focus, input[type=submit].default:focus, .button.default:hover, input[type=submit].default:hover {
+    background: #BF4B53;
+}
+
+div.breadcrumbs a, div.breadcrumbs a:focus, div.breadcrumbs a:hover {
+    color: #000000E6;
+}
