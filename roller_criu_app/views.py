@@ -108,7 +108,6 @@ class LessonDetail(View):
                     messages.success(request, 'Thank you for your booking request!')
                 else:
                     booking_form = BookingForm()
-                    print("booking failed")
 
         return render(
             request,
