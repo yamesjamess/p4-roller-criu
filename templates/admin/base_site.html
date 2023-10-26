@@ -1,0 +1,13 @@
+{% extends 'admin/base.html' %}
+{% load static %}
+
+{% block branding %}
+<h1 id="head">
+    <img src="{% static 'media/logo.png' %}" alt=""> Roller Criú Admin Panel
+</h1>
+{% endblock %}
+
+{% block extrastyle %}
+<!-- Custom CSS -->
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock %}
