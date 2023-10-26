@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
 
-<div class="container">
+<div class="container-fluid">
     <div class="jumbotron">
         <div class="welcome-my-bookings mt-5 text-center">
             <h1>My Bookings</h1>
@@ -18,7 +18,7 @@
             {% if future_bookings %}
             {% for booking in future_bookings %}
             <div class="booking-details booking-card my-4">
-                <div class="row justify-content-center align-items-center flex-lg-row">
+                <div class="row justify-content-center justify-content-xxl-between align-items-center flex-lg-row mx-5">
                     <div class="col-auto booking-img-container">
                         <a href="{% url 'lesson_detail' booking.lesson.slug %}" class="lesson-link">
                             <div class="col-auto">
@@ -32,7 +32,7 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col-auto booking-summary my-2">
+                    <div class="col-auto booking-summary my-3">
                         <div class="row">
                             {% if booking.lesson.lesson_level == 'beginner' %}
                             <div class="banner-bkgd-beginner d-inline">
@@ -57,15 +57,15 @@
                             </p>
                         </div>
                         <div class="row booking-icon">
-                            <div class="col">
+                            <div class="col offset-3">
                                 {% if booking.approved == 'approved' %}
-                                <p class="card-text h6 text-success text-center font-weight-bold pb-1"><i
+                                <p class="card-text confirmed h6 text-success text-center font-weight-bold pb-1"><i
                                         class="far fa-check-circle "></i> Confirmed</p>
                                 {% elif booking.approved == 'pending' %}
-                                <p class="card-text h6 text-warning text-center font-weight-bold pb-1"><i
+                                <p class="card-text pending h6 text-warning text-center font-weight-bold pb-1"><i
                                         class="far fa-question-circle"></i> Pending Confirmation</p>
                                 {% elif booking.approved == 'not_approved' %}
-                                <p class="card-text h6 text-danger text-center font-weight-bold pb-1"><i
+                                <p class="card-text unconfirmed h6 text-danger text-center font-weight-bold pb-1"><i
                                         class="fa-regular fa-circle-xmark"></i> Unconfirmed</p>
                                 {% endif %}
                             </div>
@@ -97,7 +97,7 @@
             {% if past_bookings %}
             {% for booking in past_bookings %}
             <div class="booking-details booking-card my-4">
-                <div class="row justify-content-center align-items-center flex-lg-row">
+                <div class="row justify-content-center justify-content-xxl-between align-items-center flex-lg-row mx-5">
                     <div class="col-auto booking-img-container">
                         <a href="{% url 'lesson_detail' booking.lesson.slug %}" class="lesson-link">
                             <div class="col-auto">
@@ -111,7 +111,7 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col-auto booking-summary my-2">
+                    <div class="col-auto booking-summary my-3">
                         <div class="row">
                             {% if booking.lesson.lesson_level == 'beginner' %}
                             <div class="banner-bkgd-beginner d-inline">
@@ -136,15 +136,15 @@
                             </p>
                         </div>
                         <div class="row booking-icon">
-                            <div class="col">
+                            <div class="col offset-3">
                                 {% if booking.approved == 'approved' %}
-                                <p class="card-text h6 text-success text-center font-weight-bold pb-1"><i
+                                <p class="card-text confirmed h6 text-success text-center font-weight-bold pb-1"><i
                                         class="far fa-check-circle "></i> Confirmed</p>
                                 {% elif booking.approved == 'pending' %}
-                                <p class="card-text h6 text-warning text-center font-weight-bold pb-1"><i
+                                <p class="card-text pending h6 text-warning text-center font-weight-bold pb-1"><i
                                         class="far fa-question-circle"></i> Pending Confirmation</p>
                                 {% elif booking.approved == 'not_approved' %}
-                                <p class="card-text h6 text-danger text-center font-weight-bold pb-1"><i
+                                <p class="card-text unconfirmed h6 text-danger text-center font-weight-bold pb-1"><i
                                         class="fa-regular fa-circle-xmark"></i> Unconfirmed</p>
                                 {% endif %}
                             </div>
