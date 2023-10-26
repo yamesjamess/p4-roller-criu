@@ -37,7 +37,7 @@
     <!-- Navigation -->
 
     <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container">
+        <div class="container-fluid">
             <a class="navbar-brand" href="{% url 'home' %}">
                 <span class="brand">
                     <img src="{% static 'media/logo.png' %}" alt="">Roller Criú
@@ -49,54 +49,124 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a {% if '/' == request.path %} class="nav-link active" aria-current="page" {% else %}
-                            class="nav-link" {% endif %} href="{% url 'home' %}">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a {% if 'about' == request.path %} class="nav-link active" aria-current="page" {% else %}
-                            class="nav-link" {% endif %} href="{% url 'about' %}">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a {% if 'contact' == request.path %} class="nav-link active" aria-current="page" {% else %}
-                            class="nav-link" {% endif %} href="{% url 'contact' %}">Contact</a>
-                    </li>
+                    {% if request.resolver_match.url_name == 'home' %}
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page"
+                                href="{% url 'home' %}">Home</a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" 
+                                href="{% url 'home' %}">Home</a>
+                        </li>
+                    {% endif %}
+                    {% if request.resolver_match.url_name == 'about' %}
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page"
+                                class="nav-link" href="{% url 'about' %}">About</a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" 
+                                href="{% url 'about' %}">About</a>
+                        </li>
+                    {% endif %}
+                    {% if request.resolver_match.url_name == 'contact' %}
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page"
+                                href="{% url 'contact' %}">Contact</a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page"
+                                href="{% url 'contact' %}">Contact</a>
+                        </li>
+                    {% endif %}
                     {% if user.is_authenticated and not user.is_staff %}
-                    <li class="nav-item">
-                        <a {% if 'bookings' == request.path %} class="nav-link active" aria-current="page" {% else %}
-                            class="nav-link" {% endif %} href="{% url 'my_bookings' %}">My Bookings</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
-                    </li>
+                        {% if request.resolver_match.url_name == 'booking' %}
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page"
+                                href="{% url 'my_bookings' %}">My Bookings</a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page"
+                                href="{% url 'my_bookings' %}">My Bookings</a>
+                        </li>
+                        {% endif %}
+                        </ul>
+
+                        <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+                        {% if request.resolver_match.url_name == 'account_logout' %}
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
+                        </li>
+                        </ul>
+                        {% endif %}
                     {% elif user.is_staff %}
-                    <li class="nav-item">
-                        <a {% if 'admin' == request.path %} class="nav-link active" aria-current="page" {% else %}
-                            class="nav-link" {% endif %} href="{% url 'admin:index' %}">Admin</a>
-                    </li>
-                    <li class="nav-item">
-                        <a {% if 'bookings' == request.path %} class="nav-link active" aria-current="page" {% else %}
-                            class="nav-link" {% endif %} href="{% url 'my_bookings' %}">My Bookings</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
+                        {% if request.resolver_match.url_name == 'booking' %}
+                        <li class="nav-item">
+                            <a  class="nav-link active" aria-current="page"
+                                href="{% url 'my_bookings' %}">My Bookings</a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page"
+                                href="{% url 'my_bookings' %}">My Bookings</a>
+                        </li>
+                        {% endif %}
+                        </ul>
+
+                        <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a  class="nav-link" aria-current="page"
+                                href="{% url 'admin:index' %}">Admin</a>
+                        </li>
+                        {% if request.resolver_match.url_name == 'account/logout.' %}
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
+                        </li>
+                        {% endif %}
+                        </ul>
+                    {% else %}
+                    </ul>
+                    <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+                    {% if request.resolver_match.url_name == 'account_signup' %}
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{% url 'account_signup' %}">Register</a>
                     </li>
                     {% else %}
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'account_signup' %}">Register</a>
                     </li>
+                    {% endif %}
+                    {% if request.resolver_match.url_name == 'account_login' %}
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{% url 'account_login' %}">Login</a>
+                    </li>
+                    {% else %}
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'account_login' %}">Login</a>
                     </li>
                     {% endif %}
-                </ul>
+                    </ul>
+                    {% endif %}
+                
             </div>
         </div>
     </nav>
 
-    <div class="container">
+    <div class="container-fluid alert-container">
         <div class="row">
-            <div class="col-md-8 offset-md-2">
+            <div class="col-md-8 offset-md-2 mt-3">
                 {% for message in messages%}
                 <div class="alert {{ message.tags }} alert-dismissible fade show" id="msg" role="alert">
                     {{ message | safe }}
