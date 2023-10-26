@@ -11,5 +11,4 @@ urlpatterns = [
     path('my_bookings/', views.MyBookings.as_view(), name='my_bookings'),
     path('<slug:slug>/', views.LessonDetail.as_view(), name='lesson_detail'),
     path('like/<slug:slug>/', login_required(views.LessonLike.as_view()), name='lesson_like'),
-    
 ]
