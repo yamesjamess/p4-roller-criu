@@ -360,3 +360,20 @@ a:hover {
         max-width: 618px;
     }
   }
+
+/* Sign up, Login, Sign out*/
+
+.btn-signup {
+    background-color: #FFDEDE;
+    font-size: 1rem;
+    font-weight: bold;
+    line-height: 1.25rem;
+    color: #BF4B53;
+    width: 20%;
+    outline: 0.5px solid #000000E6;
+}
+
+.btn-signup:hover {
+    color: #732d32;
+    outline: 0.5px solid white;
+}
