@@ -29,6 +29,7 @@
                     <h4 class="coach-name">Coach {{ coach.first_name }}</h4>
                     <p class="specialization">{{ coach.specialization|capfirst }}</p>
                 </div>
+                <hr>
                 {% if user.is_authenticated %}
                     {% now "jS M Y, H:i A" as current_time %}
                     {% if lesson.lesson_start|date:"jS M Y, H:i a" < current_time %}
@@ -47,21 +48,21 @@
                                         <option value="1" selected>1</option>
                                     </select>
                                 </div>
-                                <button type="submit" id="booking-button" class="btn btn-lg booking-button rounded-pill px-5">Book!</button>
+                                <button type="submit" id="booking-button" class="btn btn-lg booking-button rounded-pill px-5 my-3">Book!</button>
                             </form>
                         </div>
                         {% else %}
                         <div class="masthead-booking">
                             <h5>You have already submitted a booking this class!</h5>
-                            <p>Please check <strong>'My Bookings'</strong> for booking status</p>
-                            <button type="submit" class="btn btn-lg booking-button rounded-pill px-5" disabled>Book!</button>
+                            <p>Please check <a href="{% url 'my_bookings' %}"><strong class="highlighted-text">'My Bookings'</strong></a> for booking status</p>
+                            <button type="submit" class="btn btn-lg booking-button rounded-pill px-5 my-3" disabled>Book!</button>
                         </div>
                         {% endif %}
                     {% endif %}
                 {% else %}
                     <div class="masthead-booking">
                         <h5>Please Sign in to book this class!</h5>
-                        <button type="submit" class="btn btn-lg booking-button rounded-pill px-5" disabled>Book!</button>
+                        <button type="submit" class="btn btn-lg booking-button rounded-pill px-5 my-3" disabled>Book!</button>
                     </div>
                 {% endif %}
             </div>
