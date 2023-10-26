@@ -307,6 +307,10 @@ a:hover {
     line-height: 2.5em;
 }
 
+.highlighted-text {
+    color: #BF4B53;
+}
+
 /* Contact Page */
 
 #div_id_email,
