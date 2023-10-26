@@ -8,11 +8,12 @@
 body {
     background-color: #F9FAFC;
     font-family: Kodchasan, sans-serif;
+    max-width: 1500px;
 }
 
 a {
     text-decoration: none;
-}
+    }
 
 a:hover {
     color: #BF4B53;
