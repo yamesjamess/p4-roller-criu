@@ -13,7 +13,8 @@ body {
 
 a {
     text-decoration: none;
-    }
+    color: #BF4B53;
+}
 
 a:hover {
     color: #BF4B53;
@@ -79,6 +80,23 @@ a:hover {
 .footer-socials > a :hover{
     color: #BF4B53;
 }
+
+.page-link {
+    color: #BF4B53
+}
+
+.page-link:hover {
+    border-color:#bf4b53;
+    color: #BF4B53;
+    background-color: white;
+}
+
+.page-link:focus {
+    box-shadow: 0 0 0 0.25rem rgba(191, 75, 83, .25);
+    color: #BF4B53;
+    background-color: white;
+}
+
 
 /* INDEX */
 
