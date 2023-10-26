@@ -96,8 +96,6 @@ a:hover {
     color: #BF4B53;
     background-color: white;
 }
-
-
 /* INDEX */
 
 .hero-image {
@@ -357,9 +355,7 @@ a:hover {
 .unconfirmed {
     outline: 1px solid #dc3545!important;
     padding: 5px 0;
-    max-width: 70%;
-
-    
+    max-width: 70%; 
 }
 
 @media (min-width: 1200px) {
@@ -367,7 +363,6 @@ a:hover {
         max-width: 618px;
     }
   }
-
 /* Sign up, Login, Sign out*/
 
 .btn-signup {
@@ -392,4 +387,16 @@ a:hover {
     color: #dc3545;
     list-style-type: none;
     font-weight: bold;
+}
+
+/* 403, 404, 405, 500 pages */
+
+.head-image {
+    background-image: url('https://res.cloudinary.com/dukqu7lia/image/upload/v1698331770/error_image.jpg');
+    background-size: cover;
+    background-position: center 80%;
+    background-repeat: no-repeat;
+    padding-top: 10%;
+    padding-bottom: 25%;
+    margin-top: 1.5%;
 }
