@@ -317,3 +317,46 @@ a:hover {
 #div_id_contact_message {
     margin-top: 1.5rem;
 }
+
+/* My Bookings */
+
+.booking-img {
+    object-fit: cover;
+    aspect-ratio: 16/9;
+    height: 100%;
+    max-height: 180px;
+    width: auto;
+}
+
+.booking-details {
+    box-shadow: 0px 0px 5px 5px rgb(213 213 221 / 80%);
+    outline: none;
+}
+
+.confirmed {
+    outline: 1px solid #198754!important;
+    padding: 5px 0;
+    max-width: 70%;
+
+}
+
+.pending {
+    outline: 1px solid #ffc107!important;
+    padding: 5px 0;
+    max-width: 70%;
+
+}
+
+.unconfirmed {
+    outline: 1px solid #dc3545!important;
+    padding: 5px 0;
+    max-width: 70%;
+
+    
+}
+
+@media (min-width: 1200px) {
+    .booking-summary {
+        max-width: 618px;
+    }
+  }
