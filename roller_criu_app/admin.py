@@ -1,6 +1,7 @@
 from django.contrib import admin
-from .models import Coach, Lesson, Feedback, Booking, Contact
 from django_summernote.admin import SummernoteModelAdmin
+from .models import Coach, Lesson, Feedback, Booking, Contact
+
 
 
 @admin.register(Coach)
