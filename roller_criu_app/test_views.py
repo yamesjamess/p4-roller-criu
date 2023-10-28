@@ -58,4 +58,9 @@ class TestViews(TestCase):
             contact_message='This is a test contact message'
         )
 
-
+    # get index page and check if correct templates are being used
+    def test_get_lesson_list(self):
+        response = self.client.get(reverse('home'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'base.html')
+        self.assertTemplateUsed(response, 'index.html')
