@@ -11,8 +11,10 @@ class TestViews(TestCase):
     # instantiate coach, lesson, feedback, booking, and contact
     @classmethod
     def setUpTestData(self):
-        self.user = User.objects.create(username='testuser')
-        self.user.set_password('12345')
+        self.user = User.objects.create_user(
+            username='testuser',
+            password='12345'
+            )
         self.user.save()
 
         self.coach = Coach.objects.create(
@@ -78,3 +80,11 @@ class TestViews(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'base.html')
         self.assertTemplateUsed(response, 'contact.html')
+
+    # get my bookings page and check if correct templates are being used
+    def test_get_my_bookings_page(self):
+        self.client.login(username='testuser', password='12345')
+        response = self.client.get(reverse('my_bookings'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'base.html')
+        self.assertTemplateUsed(response, 'my_bookings.html')
