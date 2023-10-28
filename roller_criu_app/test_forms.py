@@ -56,3 +56,12 @@ class TestContactForm(TestCase):
     def test_fields_in_form(self):
         form = ContactForm()
         self.assertEqual(form.Meta.fields, ('name', 'email', 'contact_message'))
+
+
+class TestBookingForm(TestCase):
+
+    # test to check if form is valid
+    def test_booking_form_valid(self):
+        form_data = {'places_reserved': '1'}
+        form = BookingForm(data=form_data)
+        self.assertTrue(form.is_valid())
