@@ -66,7 +66,7 @@ class TestBookingForm(TestCase):
         form = BookingForm(data=form_data)
         self.assertTrue(form.is_valid())
 
-    # test to check that form cannot be less than 1
+    # test to check that form data cannot be less than 1
     def test_booking_form_is_no_less_than_one(self):
         form_data = {'places_reserved': '0'}
         form = BookingForm(data=form_data)
