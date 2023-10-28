@@ -51,3 +51,8 @@ class TestContactForm(TestCase):
         }
         form = ContactForm(data=form_data)
         self.assertTrue(form.is_valid())
+
+    # test to check if form fields are set up correctly
+    def test_fields_in_form(self):
+        form = ContactForm()
+        self.assertEqual(form.Meta.fields, ('name', 'email', 'contact_message'))
