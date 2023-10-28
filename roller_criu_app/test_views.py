@@ -8,6 +8,7 @@ from .models import Coach, Lesson, Feedback, Booking, Contact
 
 class TestViews(TestCase):
 
+    # instantiate coach, lesson, feedback, booking, and contact
     @classmethod
     def setUpTestData(self):
         self.user = User.objects.create(username='testuser')
