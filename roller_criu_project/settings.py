@@ -32,8 +32,13 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = 'os.environ.get("SECRET_KEY")'
 
 # SECURITY WARNING: don't run with debug turned on in production!
+# False for deployment
 DEBUG = False
 
+# True for local host testing
+# DEBUG = True
+
+# For summernotes
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 ALLOWED_HOSTS = ['8000-yamesjamess-p4rollercri-v4meaprc37s.ws-eu105.gitpod.io', 'roller-criu-54a9c256735c.herokuapp.com']
@@ -113,7 +118,7 @@ WSGI_APPLICATION = 'roller_criu_project.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-
+# Enable this for automated testing
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.sqlite3',
@@ -121,6 +126,7 @@ WSGI_APPLICATION = 'roller_criu_project.wsgi.application'
 #     }
 # }
 
+# Enable this for deployment
 DATABASES = {
    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
 }
