@@ -115,7 +115,7 @@ class TestModels(TestCase):
         self.assertEqual(feedbacks[1], feedback2)
 
     # test default values in Feedback
-    def test_feedback_default_level(self):
+    def test_feedback_default_values(self):
         self.assertEqual(self.feedback.approved, False)
 
         current_datetime = timezone.now()
@@ -123,9 +123,15 @@ class TestModels(TestCase):
         self.assertLessEqual(abs(self.feedback.created_on - current_datetime), tolerance)
 
     # test default values in Booking
-    def test_booking_default_level(self):
+    def test_booking_default_values(self):
         self.assertEqual(self.booking.approved, 'pending')
 
     # test place reserved value is not less than 1 in Booking
     def test_places_reserved_no_less_than_one(self):
         self.assertTrue(self.booking.places_reserved >= 1)
+
+    # test default values in Contact
+    def test_contact_default_values(self):
+        current_datetime = timezone.now()
+        tolerance = timezone.timedelta(seconds=1)
+        self.assertLessEqual(abs(self.contact.created_on - current_datetime), tolerance)
