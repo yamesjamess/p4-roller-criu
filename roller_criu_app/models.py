@@ -26,7 +26,7 @@ class Coach(models.Model):
     bio = models.CharField(max_length=140, help_text="Enter a brief bio")
     image = CloudinaryField('image', default='placeholder', help_text="Image must be a square")
     specialization = models.CharField(max_length=20, choices=SPECIALIZATION_CHOICES, default=RECREATIONAL)
-    years_of_experience = models.PositiveIntegerField(default='1', help_text="Enter a positive integer.")
+    years_of_experience = models.PositiveIntegerField(default=1, help_text="Enter a positive integer.")
     status = models.IntegerField(choices=STATUS, default=0)
 
     class Meta:
