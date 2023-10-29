@@ -91,3 +91,40 @@ class TestAdmin(TestCase):
         self.client.login(username='admin', password='adminpassword')
         response = self.client.get(reverse('admin:roller_criu_app_contact_changelist'))
         self.assertEqual(response.status_code, 200)
+
+    # Check if admin user can approve feedback
+    def test_admin_approve_feedback(self):
+        self.client.login(username='admin', password='adminpassword')
+        response = self.client.post(
+            reverse('admin:roller_criu_app_feedback_changelist'),
+            {
+                'action': 'approved_feedback',
+                '_selected_action': [self.feedback.id],
+            }
+        )
+        self.assertEqual(response.status_code, 302)
+        self.feedback.refresh_from_db()
+        self.assertTrue(self.feedback.approved)
+
+        # Check if admin user can approve feedback
+    def test_admin_unapprove_feedback(self):
+        # Create a test feedback with approved set to True
+        feedback = Feedback.objects.create(
+            lesson=self.lesson,
+            username=self.user,
+            email='user1@email.com',
+            body='Feedback 1',
+            approved=True
+        )
+
+        self.client.login(username='admin', password='adminpassword')
+        response = self.client.post(
+            reverse('admin:roller_criu_app_feedback_changelist'),
+            {
+                'action': 'unapproved_feedback',
+                '_selected_action': [(feedback.id)],
+            }
+        )
+        self.assertEqual(response.status_code, 302)
+        feedback.refresh_from_db()
+        self.assertTrue(feedback.approved)
