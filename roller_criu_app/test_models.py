@@ -22,7 +22,7 @@ class TestModels(TestCase):
             email='john@rollercriu.com',
             bio='This is a test bio',
             specialization=Coach.RECREATIONAL,
-            years_of_experience=5,
+            years_of_experience=1,
             status=1
         )
 
@@ -78,3 +78,14 @@ class TestModels(TestCase):
     # test the __str__ method for Contact
     def test_contact_str(self):
         self.assertEqual(str(self.contact), f'Contact message submitted by {self.contact.name} on {self.contact.created_on}')
+
+    # test default values for Coach
+    def test_coach_default_values(self):
+        self.assertEqual(self.coach.image, 'placeholder')
+        self.assertEqual(self.coach.specialization, 'recreational')
+        self.assertEqual(self.coach.years_of_experience, 1)
+    
+    # test years of experience is a positive integer in Coach
+    def test_coach__yoe_is_positive_integer(self):
+        self.assertTrue(self.coach.years_of_experience >= 0)
+        self.assertFalse(self.coach.years_of_experience <= 0)
