@@ -106,7 +106,7 @@ class TestAdmin(TestCase):
         self.feedback.refresh_from_db()
         self.assertTrue(self.feedback.approved)
 
-        # Check if admin user can approve feedback
+    # Check if admin user can unapprove feedback
     def test_admin_unapprove_feedback(self):
         # Create a test feedback with approved set to True
         feedback = Feedback.objects.create(
@@ -128,3 +128,39 @@ class TestAdmin(TestCase):
         self.assertEqual(response.status_code, 302)
         feedback.refresh_from_db()
         self.assertTrue(feedback.approved)
+
+    # Check if admin user can approve booking
+    def test_admin_approve_booking(self):
+        self.client.login(username='admin', password='adminpassword')
+        response = self.client.post(
+            reverse('admin:roller_criu_app_booking_changelist'),
+            {
+                'action': 'approved_booking',
+                '_selected_action': [self.booking.id],
+            }
+        )
+        self.assertEqual(response.status_code, 302)
+        self.booking.refresh_from_db()
+        self.assertTrue(self.booking.approved)
+    
+    # Check if admin user can unapprove booking
+    def test_admin_unapprove_booking(self):
+        # Create a test booking with approved set to approved
+        booking = Booking.objects.create(
+            lesson=self.lesson,
+            username=self.user,
+            places_reserved=1,
+            approved='approved'
+        )
+
+        self.client.login(username='admin', password='adminpassword')
+        response = self.client.post(
+            reverse('admin:roller_criu_app_booking_changelist'),
+            {
+                'action': 'unapproved_booking',
+                '_selected_action': [(booking.id)],
+            }
+        )
+        self.assertEqual(response.status_code, 302)
+        booking.refresh_from_db()
+        self.assertTrue(booking.approved)
