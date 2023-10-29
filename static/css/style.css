@@ -1,9 +1,8 @@
 /* BASE */
-* {
-    *, *::before, *::after {
-        caret-color: transparent;
-    }
+*, *::before, *::after {
+    caret-color: transparent;
 }
+
 
 body {
     background-color: #F9FAFC;
@@ -108,7 +107,7 @@ a:hover {
     margin-top: 1.5%;
 }
 
-.introduction-text {
+.introduction-text, .error-code-text {
     text-align: center;
     background-color: rgba(255, 222, 222, 0.7);
     margin: 0 15%;
@@ -363,6 +362,7 @@ a:hover {
         max-width: 618px;
     }
   }
+
 /* Sign up, Login, Sign out*/
 
 .btn-signup {

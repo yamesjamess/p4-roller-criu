@@ -3,9 +3,12 @@
 
 {% block content %}
 <div class="container-fluid">
-    <div class="jumbotron">
-        <div class="error-text">
-            <h1>500 : Internal Server Error!</h1>
+    <div class="jumbotron head-image">
+        <div class="error-code-text">
+            <h1>Oops! Looks like we fell!</h1>
+            <h2>500 : Internal Server Error!</h2>
+            <h4>It's okay! Let's get back up!</h4>
+            <a class="btn btn-lg booking-button rounded-pill px-5" href="{% url 'home' %}">Home</a>
         </div>
     </div>
 {% endblock %}
