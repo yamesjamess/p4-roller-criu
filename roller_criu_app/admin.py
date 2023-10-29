@@ -32,12 +32,12 @@ class FeedbackAdmin(admin.ModelAdmin):
     list_filter = ('approved', 'created_on')
     list_display_links = ('username',)
     search_fields = ['username', 'user_id', 'body']
-    actions = ['approved_feedback', 'unapprove_feedback']
+    actions = ['approved_feedback', 'unapproved_feedback']
 
     def approved_feedback(self, request, queryset):
         queryset.update(approved=True)
 
-    def unapprove_feedback(self, request, queryset):
+    def unapproved_feedback(self, request, queryset):
         queryset.update(approved=False)
 
 
