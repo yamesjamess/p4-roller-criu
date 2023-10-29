@@ -45,6 +45,7 @@
                                 <div class="form-group" id="booking-form-elements">
                                     <label for="{{ booking_form.places_reserved.id_for_label }}" class="col-form-label">Number of Places Reserved*</label>
                                     <select class="form-select" name="places_reserved" id="{{ booking_form.places_reserved.id_for_label }}">
+                                        <!-- One user can only reserve one slot per lesson -->
                                         <option value="1" selected>1</option>
                                     </select>
                                 </div>
