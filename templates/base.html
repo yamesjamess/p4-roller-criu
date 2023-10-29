@@ -82,8 +82,9 @@
                                 href="{% url 'contact' %}">Contact</a>
                         </li>
                     {% endif %}
+                    <!-- show these nav items if the user is logged in and is not a staff member -->
                     {% if user.is_authenticated and not user.is_staff %}
-                        {% if request.resolver_match.url_name == 'booking' %}
+                        {% if request.resolver_match.url_name == 'my_bookings' %}
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page"
                                 href="{% url 'my_bookings' %}">My Bookings</a>
@@ -98,8 +99,8 @@
 
                         <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
                         {% if request.resolver_match.url_name == 'account_logout' %}
-                        <li class="nav-item active">
-                            <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="{% url 'account_logout' %}">Logout</a>
                         </li>
                         {% else %}
                         <li class="nav-item">
@@ -107,10 +108,11 @@
                         </li>
                         </ul>
                         {% endif %}
-                    {% elif user.is_staff %}
-                        {% if request.resolver_match.url_name == 'booking' %}
+                    <!-- show these nav items if the user is logged in and is a staff member -->
+                    {% elif user.is_authenticated and user.is_staff %}
+                        {% if request.resolver_match.url_name == 'my_bookings' %}
                         <li class="nav-item">
-                            <a  class="nav-link active" aria-current="page"
+                            <a class="nav-link active" aria-current="page"
                                 href="{% url 'my_bookings' %}">My Bookings</a>
                         </li>
                         {% else %}
@@ -126,9 +128,9 @@
                             <a  class="nav-link" aria-current="page"
                                 href="{% url 'admin:index' %}">Admin</a>
                         </li>
-                        {% if request.resolver_match.url_name == 'account/logout.' %}
-                        <li class="nav-item active">
-                            <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
+                        {% if request.resolver_match.url_name == 'account_logout' %}
+                        <li class="nav-item">
+                            <a class="nav-link active" href="{% url 'account_logout' %}">Logout</a>
                         </li>
                         {% else %}
                         <li class="nav-item">
@@ -140,8 +142,8 @@
                     </ul>
                     <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
                     {% if request.resolver_match.url_name == 'account_signup' %}
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{% url 'account_signup' %}">Register</a>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{% url 'account_signup' %}">Register</a>
                     </li>
                     {% else %}
                     <li class="nav-item">
@@ -149,8 +151,8 @@
                     </li>
                     {% endif %}
                     {% if request.resolver_match.url_name == 'account_login' %}
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{% url 'account_login' %}">Login</a>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{% url 'account_login' %}">Login</a>
                     </li>
                     {% else %}
                     <li class="nav-item">
