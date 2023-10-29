@@ -31,9 +31,10 @@
                 </div>
                 <hr>
                 {% if user.is_authenticated %}
-                    {% now "jS M Y, H:i a" as current_time %}
-                    {% if lesson.lesson_start|date:"jS M Y, H:i a" < current_time %}
+                    {% now "M. d, Y, g a" as current_time %}
+                    {% if lesson.lesson_start < current_time %}
                         <h5>This lesson has started. You can no longer book this lesson.</h5>
+                        {{ lesson.lesson_start }}
                         <button type="submit" class="btn btn-lg booking-button rounded-pill px-5" disabled>Book!</button> 
                     {% else %}
                         {% if not has_booking %}
