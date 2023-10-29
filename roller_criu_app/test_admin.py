@@ -61,3 +61,33 @@ class TestAdmin(TestCase):
             email='jane@email.com',
             contact_message='This is a test contact message'
         )
+
+    # test to check if admin can login and get to Coach database page
+    def test_coach_admin(self):
+        self.client.login(username='admin', password='adminpassword')
+        response = self.client.get(reverse('admin:roller_criu_app_coach_changelist'))
+        self.assertEqual(response.status_code, 200)
+
+    # test to check if admin can login and get to Lesson database
+    def test_lesson_admin(self):
+        self.client.login(username='admin', password='adminpassword')
+        response = self.client.get(reverse('admin:roller_criu_app_lesson_changelist'))
+        self.assertEqual(response.status_code, 200)
+
+    # test to check if admin can login and get to feedback database page
+    def test_feedback_admin(self):
+        self.client.login(username='admin', password='adminpassword')
+        response = self.client.get(reverse('admin:roller_criu_app_feedback_changelist'))
+        self.assertEqual(response.status_code, 200)
+
+    # test to check if admin can login and get to booking database page
+    def test_booking_admin(self):
+        self.client.login(username='admin', password='adminpassword')
+        response = self.client.get(reverse('admin:roller_criu_app_booking_changelist'))
+        self.assertEqual(response.status_code, 200)
+
+    # test to check if admin can login and get to Contact database page
+    def test_contact_admin(self):
+        self.client.login(username='admin', password='adminpassword')
+        response = self.client.get(reverse('admin:roller_criu_app_contact_changelist'))
+        self.assertEqual(response.status_code, 200)
