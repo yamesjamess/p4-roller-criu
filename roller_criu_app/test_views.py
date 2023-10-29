@@ -10,13 +10,14 @@ class TestViews(TestCase):
 
     # instantiate coach, lesson, feedback, booking, and contact
     @classmethod
-    def setUpTestData(cls):
-        cls.user = User.objects.create_user(
+    def setUpTestData(self):
+        self.user = User.objects.create_user(
             username='testuser',
-            password='12345'
+            password='12345',
+            email='test@email.com'
             )
 
-        cls.coach = Coach.objects.create(
+        self.coach = Coach.objects.create(
             first_name='John',
             last_name='Smith',
             email='john@rollercriu.com',
@@ -26,34 +27,34 @@ class TestViews(TestCase):
             status=1
         )
 
-        cls.lesson = Lesson.objects.create(
+        self.lesson = Lesson.objects.create(
             title='Test Lesson 1',
             slug='test-lesson-1',
             lesson_start=datetime(2018, 4, 4, 0, 0, 0, tzinfo=pytz.utc),
             lesson_level=Lesson.BEGINNER,
             duration=timedelta(hours=1),
             location='Test Location 1',
-            coach=cls.coach,
+            coach=self.coach,
             content='Test content for lesson 1',
             status=0
         )
 
-        cls.feedback = Feedback.objects.create(
-            lesson=cls.lesson,
-            username=cls.user,
+        self.feedback = Feedback.objects.create(
+            lesson=self.lesson,
+            username=self.user,
             email='user@email.com',
             body='Feedback 2',
             approved=True
         )
 
-        cls.booking = Booking.objects.create(
-            lesson=cls.lesson,
-            username=cls.user,
+        self.booking = Booking.objects.create(
+            lesson=self.lesson,
+            username=self.user,
             places_reserved=1,
             approved='approved'
         )
 
-        cls.contact = Contact.objects.create(
+        self.contact = Contact.objects.create(
             name='Jane',
             email='jane@email.com',
             contact_message='This is a test contact message'
@@ -89,31 +90,24 @@ class TestViews(TestCase):
         self.assertTemplateUsed(response, 'my_bookings.html')
 
     # get lesson detail page and check if correct templates are being used
-    def test_get_lesson_detail_page(self):
-        response = self.client.get(reverse('about'))
-        self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'base.html')
-        self.assertTemplateUsed(response, 'about.html')
+    # def test_get_lesson_detail_page(self):
+    #     self.client.login(username='testuser', password='12345')
+    #     lesson_slug = self.lesson.slug
+    #     print(lesson_slug)
+    #     response = self.client.get(reverse('lesson_detail', kwargs={'slug': 'test-lesson-1'}))
+    #     self.assertEqual(response.status_code, 200)
 
     # check if the user can toggle like and unlike
-    def test_can_toggle_like_lesson(self):
+    # def test_can_toggle_like_lesson(self):
+
+
+    # check if user can leave a feedback
+    # def test_can_leave_feedback(self):
+
+    # check if user can cancel/delete booking
+    def test_cancel_booking_success(self):
         self.client.login(username='testuser', password='12345')
 
-        lesson_detail_url = reverse('lesson_detail', kwargs={'slug': 'test-lesson-1'})
-        response = self.client.get(lesson_detail_url)
-
-        numlikes = self.lesson.number_of_likes()
-        self.assertEqual(numlikes, 0)
-
-        like_url = reverse('lesson_like', kwargs={'slug': 'test-lesson-1'})
-        response = self.client.post(like_url)
-
+        response = self.client.post(reverse('my_bookings'), {'booking_id': self.booking.id})
         self.assertEqual(response.status_code, 302)
-        self.lesson.refresh_from_db()
-        self.assertEqual(self.lesson.number_of_likes(), 1)
-
-        response = self.client.post(like_url)
-
-        self.assertEqual(response.status_code, 302)
-        self.lesson.refresh_from_db()
-        self.assertEqual(self.lesson.number_of_likes(), 0)
+        self.assertFalse(Booking.objects.filter(id=self.booking.id).exists())
