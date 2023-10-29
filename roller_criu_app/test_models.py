@@ -1,5 +1,6 @@
 from django.test import TestCase
 from django.contrib.auth.models import User
+from django.utils import timezone
 from datetime import datetime, timedelta
 import pytz
 from .models import Coach, Lesson, Feedback, Booking, Contact
@@ -37,9 +38,8 @@ class TestModels(TestCase):
         self.feedback = Feedback.objects.create(
             lesson=self.lesson,
             username=self.user,
-            email='user@email.com',
-            body='Feedback 2',
-            approved=True
+            email='user1@email.com',
+            body='Feedback 1',
         )
 
         self.booking = Booking.objects.create(
@@ -100,3 +100,25 @@ class TestModels(TestCase):
         self.assertEqual(self.lesson.featured_image, 'placeholder')
         self.assertEqual(self.lesson.duration, timedelta(hours=1))
 
+    # test ordering in Feedback
+    def test_feedback_ordering(self):
+        feedback2 = Feedback.objects.create(
+            lesson=self.lesson,
+            username=self.user,
+            email='user2@email.com',
+            body='Feedback 2',
+            approved=True
+        )
+
+        feedbacks = Feedback.objects.all()
+
+        self.assertEqual(feedbacks[0], self.feedback)
+        self.assertEqual(feedbacks[1], feedback2)
+
+    # test default values in Feedback
+    def test_feedback_default_level(self):
+        self.assertEqual(self.feedback.approved, False)
+
+        current_datetime = timezone.now()
+        tolerance = timezone.timedelta(seconds=1)
+        self.assertLessEqual(abs(self.feedback.created_on - current_datetime), tolerance)
