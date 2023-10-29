@@ -1,6 +1,7 @@
 from django.test import TestCase
 from django.contrib.auth.models import User
-
+from datetime import datetime, timedelta
+import pytz
 from .models import Coach, Lesson, Feedback, Booking, Contact
 
 
@@ -58,4 +59,22 @@ class TestModels(TestCase):
             contact_message='This is a test contact message'
         )
 
-    
+    # test the __str__ method for Coach
+    def test_coach_str(self):
+        self.assertEqual(str(self.coach), f'Coach {self.coach.first_name} {self.coach.last_name}')
+
+    # test the __str__ method for Lesson
+    def test_lesson_str(self):
+        self.assertEqual(str(self.lesson), self.lesson.title)
+
+    # test the __str__ method for Feedback
+    def test_feedback_str(self):
+        self.assertEqual(str(self.feedback), f'Feedback {self.feedback.body} by {self.user.username}')
+
+    # test the __str__ method for Booking
+    def test_booking_str(self):
+        self.assertEqual(str(self.booking), f'{self.booking.lesson} is booked by {self.user.username}')
+
+    # test the __str__ method for Contact
+    def test_contact_str(self):
+        self.assertEqual(str(self.contact), f'Contact message submitted by {self.contact.name} on {self.contact.created_on}')
