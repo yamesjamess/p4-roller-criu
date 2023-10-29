@@ -46,7 +46,6 @@ class TestModels(TestCase):
             lesson=self.lesson,
             username=self.user,
             places_reserved=1,
-            approved='approved'
         )
 
         self.contact = Contact.objects.create(
@@ -122,3 +121,11 @@ class TestModels(TestCase):
         current_datetime = timezone.now()
         tolerance = timezone.timedelta(seconds=1)
         self.assertLessEqual(abs(self.feedback.created_on - current_datetime), tolerance)
+
+    # test default values in Booking
+    def test_booking_default_level(self):
+        self.assertEqual(self.booking.approved, 'pending')
+
+    # test place reserved value is not less than 1 in Booking
+    def test_places_reserved_no_less_than_one(self):
+        self.assertTrue(self.booking.places_reserved >= 1)
