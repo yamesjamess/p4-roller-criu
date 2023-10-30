@@ -350,6 +350,11 @@ automated tests.
 
 ### Known Bugs
 
+* Not entirely a bug, but Django Admin Panel supports themes and dark theme based on broswer setting. If you open the panel and noticed that its not White and Pink in colour, then your browser have applied Dark Mode to the admin panel
+  * To fix that you can try the following solution from [Stackoverflow](https://stackoverflow.com/questions/67135053/can-someone-explain-to-my-why-my-django-admin-theme-is-dark)
+
+* In the LessonDetail view, if user don't have that lesson booked, they can submit feedback, but if they do have it booked, then they can't submit feedback.
+  * Reworked the logic, because the feedback form logic is nested inside the has_booking check, it evaluate as false when user try to POST because when  if has_booking is False, then it sends an error message. 
 ### Unfixed Bugs
 * There are no unfixed bugs that the developer is aware of.
 
