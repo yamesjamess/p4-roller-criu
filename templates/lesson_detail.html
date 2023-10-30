@@ -32,9 +32,6 @@
                 </div>
                 <hr>
                 {% if user.is_authenticated %}
-                    {% if past_lesson %}
-                        <h5>This lesson has started. You can no longer book this lesson.</h5>
-                    {% else %}
                         {% if not has_booking %}
                         <div class="masthead-booking">
                             <h5>Booking for: </h5>
@@ -58,7 +55,6 @@
                             <button type="submit" class="btn btn-lg booking-button rounded-pill px-5 my-3" disabled>Book!</button>
                         </div>
                         {% endif %}
-                    {% endif %}
                 {% else %}
                     <div class="masthead-booking">
                         <h5>Please Sign in to book this class!</h5>
