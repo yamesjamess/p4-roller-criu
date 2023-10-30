@@ -49,6 +49,7 @@
                                 <option value="1" selected>1</option>
                             </select>
                         </div>
+                        <input type="hidden" name="booking_submit" value="1">
                         <button type="submit" id="booking-button"
                             class="btn btn-lg booking-button rounded-pill px-5 my-3">Book!</button>
                     </form>
@@ -178,6 +179,7 @@
                 <h3>Leave a feedback:</h3>
                 <p>Posting as: {{ user.username }}</p>
                 <form method="post" class="feedback-form">
+                    <input type="hidden" name="feedback_submit" value="1">
                     {{ feedback_form | crispy }}
                     {% csrf_token %}
                     <button type="submit" class="btn btn-lg btn-form my-3 p-3 rounded-pill">Submit</button>
