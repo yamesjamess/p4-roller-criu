@@ -80,8 +80,7 @@ class TestModels(TestCase):
     def test_contact_str(self):
         self.assertEqual(str(
             self.contact),
-            f'Contact message submitted by {self.contact.name} on
-            {self.contact.created_on}')
+            f'Contact message submitted by {self.contact.name} on {self.contact.created_on}')
 
     # test default values in Coach
     def test_coach_default_values(self):
