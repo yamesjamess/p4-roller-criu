@@ -136,3 +136,13 @@ class TestViews(TestCase):
         response = self.client.post(reverse('my_bookings'), {'booking_id': self.booking.id})
         self.assertEqual(response.status_code, 302)
         self.assertFalse(Booking.objects.filter(id=self.booking.id).exists())
+
+    # check if user can book a lesson
+    def test_user_can_book_lesson(self):
+        self.client.login(username='testuser', password='12345')
+
+        response = self.client.get(reverse('lesson_detail', args=(self.lesson.slug,)))
+        self.assertEqual(response.status_code, 200)
+
+        response = self.client.post(reverse('lesson_detail', args=(self.lesson.slug,)), data={'places_reserved': 1})
+        self.assertEqual(response.status_code, 200)                                                                                     
