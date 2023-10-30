@@ -26,7 +26,7 @@
                                 <img class="booking-img d-none d-md-inline-block"
                                     src="https://res.cloudinary.com/dukqu7lia/image/upload/v1696354385/placeholder.jpg">
                                 {% else %}
-                                <img src="{{ booking.lesson.lesson.featured_image.url }}"
+                                <img src="{{ booking.lesson.featured_image.url }}"
                                     class="booking-img d-none d-md-block">
                                 {% endif %}
                             </div>
@@ -59,13 +59,13 @@
                         <div class="row booking-icon">
                             <div class="col offset-3">
                                 {% if booking.approved == 'approved' %}
-                                <p class="card-text confirmed h6 text-success text-center font-weight-bold pb-1"><i
+                                <p class="card-text confirmed h6 text-white text-center font-weight-bold pb-1"><i
                                         class="far fa-check-circle "></i> Confirmed</p>
                                 {% elif booking.approved == 'pending' %}
-                                <p class="card-text pending h6 text-warning text-center font-weight-bold pb-1"><i
+                                <p class="card-text pending h6 text-muted text-center font-weight-bold pb-1"><i
                                         class="far fa-question-circle"></i> Pending Confirmation</p>
                                 {% elif booking.approved == 'not_approved' %}
-                                <p class="card-text unconfirmed h6 text-danger text-center font-weight-bold pb-1"><i
+                                <p class="card-text unconfirmed h6 text-white text-center font-weight-bold pb-1"><i
                                         class="fa-regular fa-circle-xmark"></i> Unconfirmed</p>
                                 {% endif %}
                             </div>
@@ -105,7 +105,7 @@
                                 <img class="booking-img d-none d-md-inline-block"
                                     src="https://res.cloudinary.com/dukqu7lia/image/upload/v1696354385/placeholder.jpg">
                                 {% else %}
-                                <img src="{{ booking.lesson.lesson.featured_image.url }}"
+                                <img src="{{ booking.lesson.featured_image.url }}"
                                     class="booking-img d-none d-md-block">
                                 {% endif %}
                             </div>
@@ -138,13 +138,13 @@
                         <div class="row booking-icon">
                             <div class="col offset-3">
                                 {% if booking.approved == 'approved' %}
-                                <p class="card-text confirmed h6 text-success text-center font-weight-bold pb-1"><i
+                                <p class="card-text confirmed h6 text-white text-center font-weight-bold pb-1"><i
                                         class="far fa-check-circle "></i> Confirmed</p>
                                 {% elif booking.approved == 'pending' %}
-                                <p class="card-text pending h6 text-warning text-center font-weight-bold pb-1"><i
+                                <p class="card-text pending h6 text-muted text-center font-weight-bold pb-1"><i
                                         class="far fa-question-circle"></i> Pending Confirmation</p>
                                 {% elif booking.approved == 'not_approved' %}
-                                <p class="card-text unconfirmed h6 text-danger text-center font-weight-bold pb-1"><i
+                                <p class="card-text unconfirmed h6 text-white text-center font-weight-bold pb-1"><i
                                         class="fa-regular fa-circle-xmark"></i> Unconfirmed</p>
                                 {% endif %}
                             </div>
