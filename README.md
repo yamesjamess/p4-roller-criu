@@ -458,6 +458,7 @@ Once code changes have been completed and tested on localhost, the application c
 * Code to help filter upcoming & past bookings : [Date filtering](https://stackoverflow.com/questions/21576727/django-records-greater-than-particular-date)
 * Code to test styling for custom error page : [Custom Error Page styling](https://code-institute-room.slack.com/archives/C026PTF46F5/p1677259598061899?thread_ts=1677257666.571489&cid=C026PTF46F5)
 * Disable darkmode on admin panel : [Dark mode](https://stackoverflow.com/questions/67193106/disable-prefers-color-scheme-dark-in-django-admin)
+* Code for adding context to views : [Context](https://stackoverflow.com/questions/51631651/why-use-get-context-data-self-kwargs-and-super)
 
 ### Content
 * Information on the website is created by the developer.
