@@ -416,6 +416,32 @@ automated tests.
   * **result for urls.py**
     ![urls.py](documentation/support_images/validator/python/urls_py.png)
 
+### Automated Testing
+
+  * [Django testing tools](https://docs.djangoproject.com/en/4.2/topics/testing/tools/) were used to create automated testing for python code.
+    * results of the test
+    ![automated test result](documentation/support_images/automated_testing/automated_test_result.png)
+    * coverage report
+    ![coverage report](documentation/support_images/automated_testing/coverage_report.png)
+
+  * DB tests were run in the development environment against a local SQLite3 database.
+
+  * Tests were written for the following files :
+    * **admin.py** was tested with **test_admin.py**
+    * **forms.py** was tested with **test_forms.py**
+    * **models.py** was tested with **test_models.py**
+    * **views.py** was tested with **test_views.py**
+
+### Browser Compatibility
+
+  * The website has been tested on the following browsers:
+    * Google Chrome Version 118.0.5993.118 (Official Build) (64-bit)
+    * Mozilla Firefox Version 119.0 (64-bit)
+    * Microsoft Edge Version 118.0.2088.76 (Official build) (64-bit)
+    * Apple Safari on macOS Ventura Version 16.5 (18615.2.9.11.4)
+    * Apple Safari on iOS 16.6.1 (20G81)
+    * DuckDuckGo Mobile Version 7.93.0.2
+
 ### Test Cases and Results
 
 * The table below details the testing case that was used and the result of the test.
