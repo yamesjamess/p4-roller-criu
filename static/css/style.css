@@ -248,6 +248,10 @@ a:hover {
     background-color: transparent;
 }
 
+.lesson-detail-img {
+    max-height: 200px;
+}
+
 .btn-like {
     color: #BF4B53;
     border: none;

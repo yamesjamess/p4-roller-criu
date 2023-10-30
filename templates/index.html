@@ -21,10 +21,10 @@
                         <div class="card-body">
                             <div class="image-container">
                                 {% if "placeholder" in lesson.featured_image.url %}
-                                <img class="card-img-top"
+                                <img class="card-img-top lesson-detail-img"
                                     src="https://res.cloudinary.com/dukqu7lia/image/upload/v1696354385/placeholder.jpg">
                                 {% else %}
-                                <img class="card-img-top" src=" {{ lesson.featured_image.url }} ">
+                                <img class="card-img-top lesson-detail-img" src=" {{ lesson.featured_image.url }} ">
                                 {% endif %}
                                 {% if lesson.lesson_level == 'beginner' %}
                                 <div class="image-banner banner-bkgd-beginner">
