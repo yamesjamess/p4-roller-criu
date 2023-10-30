@@ -50,14 +50,14 @@
                         </div>
                         {% else %}
                         <div class="masthead-booking">
-                            <h5>You have already submitted a booking this class!</h5>
+                            <h5>You have already submitted a booking this lesson!</h5>
                             <p>Please check <a href="{% url 'my_bookings' %}"><strong class="highlighted-text">'My Bookings'</strong></a> for booking status</p>
                             <button type="submit" class="btn btn-lg booking-button rounded-pill px-5 my-3" disabled>Book!</button>
                         </div>
                         {% endif %}
                 {% else %}
                     <div class="masthead-booking">
-                        <h5>Please Sign in to book this class!</h5>
+                        <h5>Please Sign in to book this lesson!</h5>
                         <button type="submit" class="btn btn-lg booking-button rounded-pill px-5 my-3" disabled>Book!</button>
                     </div>
                 {% endif %}
