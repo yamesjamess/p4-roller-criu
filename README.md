@@ -338,11 +338,83 @@ automated tests.
 
 ### Validator Testing
 
+* [HTML Validator](https://validator.w3.org/)
+  * Due to the nature of the Django Templating language is not considered valid by the HTML Validator, alternative way to test is listed down below
+    * The HTML was tested by running the server.
+    * Then right click on the page.
+    * Select "View page source"
+    * Copied the HTML code
+    * Paste into the validator.
+
+  * **results for index.html**
+  ![index.html](documentation/support_images/validator/html/index.png)
+
+  * **results for about.html**
+  ![about.html](documentation/support_images/validator/html/about.png)
+
+  * **results for lesson_detail.html**
+  ![lesson_detail.html](documentation/support_images/validator/html/lesson_detail.png)
+
+  * **results for my_bookings.html**
+  ![my_bookings.html](documentation/support_images/validator/html/my_bookings.png)
+
+  * **results for contact.html**
+  ![contact.html](documentation/support_images/validator/html/contact.png)
+
+  * **results for login.html**
+  ![login.html](documentation/support_images/validator/html/login.png)
+
+  * **results for signup.html**
+    * The error cannot be fix due to the form was rendered by Crispy
+  ![signup.html](documentation/support_images/validator/html/register.png)
+
+  * **results for logout.html**
+  ![logout.html](documentation/support_images/validator/html/logout.png)
+
+* [CSS Validator](https://jigsaw.w3.org/css-validator/)
+
+  * **results for style.css**
+
+![style.css](documentation/support_images/validator/css/style_css.png)
+
+  * **results for admin.css**
+
+![admin.css](documentation/support_images/validator/css/admin_css.png)
+
+* [Javasscript Validator](https://jshint.com/)
+
+  * **results for script.js**
+    * the undefined variable is because the script.js is a standalone file so it has no access to bootstrap, but when linked together in base.html it can access the variable.
+  ![script.js](documentation/support_images/validator/js/javascript.png)
+
 * [CI Python Linter](https://pep8ci.herokuapp.com/)
 
-    - result for run.py
+  * **result for admin.py**
+    ![admin.py](documentation/support_images/validator/python/admin_py.png)
 
-    ![Python Validator Results](documentation/validation_results/python_validator_result.png)
+  * **result for test_admin.py**
+    ![test_admin.py](documentation/support_images/validator/python/test_admin_py.png)
+
+  * **result for forms.py**
+    ![forms.py](documentation/support_images/validator/python/forms_py.png)
+
+  * **result for test_forms.py**
+    ![test_forms.py](documentation/support_images/validator/python/test_forms_py.png)
+
+  * **result for models.py**
+    ![models.py](documentation/support_images/validator/python/models_py.png)
+
+  * **result for test_models.py**
+    ![test_models.py](documentation/support_images/validator/python/test_models_py.png)
+
+  * **result for views.py**
+    ![views.py](documentation/support_images/validator/python/views_py.png)
+
+  * **result for test_views.py**
+    ![test_views.py](documentation/support_images/validator/python/test_views_py.png)
+
+  * **result for urls.py**
+    ![urls.py](documentation/support_images/validator/python/urls_py.png)
 
 ### Test Cases and Results
 
