@@ -158,7 +158,7 @@ class ContactAdmin(admin.ModelAdmin):
         list_display_links (tuple): Fields to use as links in the list view.
         search_fields (list): Fields to search for in the admin list view.
     """
-    
+
     list_display = ('name', 'email', 'contact_message', 'created_on')
     list_filter = ('name', 'email', 'created_on')
     list_display_links = ('name',)
