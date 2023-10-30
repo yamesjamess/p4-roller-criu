@@ -17,12 +17,22 @@ class LessonList(generic.ListView):
     template_name = 'index.html'
     paginate_by = 6
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['page_title'] = 'Learn to become an artistic roller skater with us'
+        return context
+
 
 class About(generic.ListView):
     model = Coach
     queryset = Coach.objects.filter(status=1).order_by('first_name')
     template_name = 'about.html'
     paginate_by = 6
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['page_title'] = 'About'
+        return context
 
 
 class Contact(CreateView):
@@ -31,6 +41,10 @@ class Contact(CreateView):
     template_name = 'contact.html'
     success_url = reverse_lazy('contact_success')
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['page_title'] = 'Contact'
+        return context
 
 class LessonDetail(View):
 
@@ -63,6 +77,7 @@ class LessonDetail(View):
                 "has_booking": has_booking,
                 "feedback_form": FeedbackForm(),
                 "booking_form": booking_form,
+                "page_title": lesson.title,
             },
         )
 
@@ -122,6 +137,7 @@ class LessonDetail(View):
                 "liked": liked,
                 "feedback_form": FeedbackForm(),
                 "booking_form": booking_form,
+                "page_title": lesson.title,
             },
         )
 
@@ -158,6 +174,7 @@ class MyBookings(LoginRequiredMixin, View):
             {
                 "future_bookings": future_bookings,
                 "past_bookings": past_bookings,
+                "page_title": "My Bookings",
             },
         )
 
