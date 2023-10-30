@@ -25,11 +25,52 @@ If the Guest users want to access more functionality such as: like/unlike lesson
 
 ### User Stories :
 
-* User Story #1: Gather ideas and general requirements for the project.
-  * As a **developer**, I can **visualise how the website should be designed**, so that **the website gets developed methodically**
+* USER STORY (#1) : Gather ideas and general requirements for the project.
+  * As a **developer**, I can **visualise how the website should be designed**, so that **the website gets developed methodically**.
 
-* User Story #2: Intial Django project setup
-  * As a **developer**, I can **set up the developing environment and deploy to Heroku**, so that I can **solve any deployment issue that arises early on**
+* USER STORY (#2) : Intial Django project setup
+  * As a **developer**, I can **set up the developing environment and deploy to Heroku**, so that **I can solve any deployment issue that arises early on**.
+* USER STORY (#3) : Create bootstrap template
+  * As a **developer**, I can **create an essential website using Bootstrap**, so that **it meets my site's requirements**.
+* USER STORY (#4) : Demonstrate the application's purpose using its user interface
+  * As a **Site User**, I can **visit the website**, so that **I can understand and determine the purpose of the website**.
+* USER STORY (#5) : Navigate site
+  * As a **Site user**, I can **navigate the website using the menu**, so that **I can easily access the website's funcationality**.
+* USER STORY (#6) : View lessons list
+  * As a **Site User**, I can **view a list of lessons**, so that **I can select on to access for more details**.
+* USER STORY (#7) : View lesson information
+  * As a **Site User**, I can **click on a lesson**, so that **I can view the full details of the lesson**.
+* USER STORY (#8) : Book a lesson
+  * As a **Site User**, I can **submit a lesson booking request**, so that **a place reserved for me**.
+* USER STORY (#9) : View booked lessons
+  * As a **Site user**, I can **access the list of lessons that I have sent a booking request**, so that **I can see if my lessons has been approved or not**.
+* USER STORY (#10) : Cancel a lesson booking
+  * As a **Site user**, I can **cancel a lesson booking request**, so that **the place is no longer reserved for me**.
+* USER STORY (#11) : View likes on a lesson
+  * As a **Site User**, I can **view the number of likes on each lesson**, so that **I can see which is the most popular**.
+* USER STORY (#12) : Like / Unlike a lesson
+  * As a **Site User**, I can **like or unlike a lesson**, so that **I can give quick feedback on my experience**.
+* USER STORY (#13) : Feedback on a lesson
+  * As a **Site User**, I can **leave feedback on the lesson**, so that **give more detailed feedback on my experience**.
+* USER STORY (#14) : View feedback
+  * As a **Site user**, I can **view feedback on individual lessons**, so that **I can use the feedback to help me make a decision to submit a booking request or not**.
+* USER STORY (#15) : Approve/Not Approve feedback
+  * As a **Site Admin**, I can **approve or not approve feedback**, so that **I can filter out unsuitable or objectionable feedback**.
+* USER STORY (#16) : Create lesson draft
+  * As a **Site Admin**, I can **create a draft for a lesson**, so that **I can come back to finish writing the lesson details later**.
+* USER STORY (#17) : Manage Lesson
+  * As a **Site Admin**, I can **create, read, update and delete lessons**, so that **I can manage lesson availability and site's content**.
+* USER STORY (#18) : Account registration & Login
+  * As a **Site user**, I can **register an account**, so that **I can log in to book, leave feedback, and/or like a lesson**.
+* USER STORY (#19) : Manage Coach
+  * As a **Site Admin**, I can **create, read, update and delete coaches**, so that **I can manage coaches content**.
+* USER STORY (#20) : Create coach draft
+  * As a **Site Admin**, I can **create a draft for a coach**, so that **I can come back to finish writing the class details later**.
+* USER STORY (#21) : Approve bookings
+  * As a **Site Admin**, I can **review and approve or disapprove a booking request**, so that **I can manage the capacity of the lesson**.
+* USER STORY (#22) : View Contact Form
+  * As a **Site User**, I can **visit the contact form page**, so that **I can fill out the form to submit my message**.
+
 
 ## Features
 ---
