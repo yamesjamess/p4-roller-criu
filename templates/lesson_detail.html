@@ -1,5 +1,6 @@
 {% extends 'base.html' %} 
 {% load static %}
+{% load tz %}
 {% block content %}
 
 {% load crispy_forms_tags %}
@@ -31,10 +32,8 @@
                 </div>
                 <hr>
                 {% if user.is_authenticated %}
-                    {% now "M. d, Y, g a" as current_time %}
-                    {% if lesson.lesson_start < current_time %}
+                    {% if past_lesson %}
                         <h5>This lesson has started. You can no longer book this lesson.</h5>
-                        <button type="submit" class="btn btn-lg booking-button rounded-pill px-5" disabled>Book!</button> 
                     {% else %}
                         {% if not has_booking %}
                         <div class="masthead-booking">

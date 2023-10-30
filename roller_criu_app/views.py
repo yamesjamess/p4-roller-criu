@@ -43,6 +43,9 @@ class LessonDetail(View):
         has_booking = False
         liked = False
 
+        current_time = timezone.now()
+        past_lesson = Lesson.objects.filter(lesson_start__lte=current_time) 
+
         booking_form = BookingForm()
 
         if user.is_authenticated:
@@ -63,6 +66,7 @@ class LessonDetail(View):
                 "has_booking": has_booking,
                 "feedback_form": FeedbackForm(),
                 "booking_form": booking_form,
+                "past_lesson": past_lesson,
             },
         )
 
@@ -76,6 +80,9 @@ class LessonDetail(View):
         user = get_user(request)
         submitted_feedback = False
         submitted_booking = False
+
+        current_time = timezone.now()
+        past_lesson = Lesson.objects.filter(lesson_start__lte=current_time) 
         
         if lesson.likes.filter(id=self.request.user.id).exists():
             liked = True
@@ -122,6 +129,7 @@ class LessonDetail(View):
                 "liked": liked,
                 "feedback_form": FeedbackForm(),
                 "booking_form": booking_form,
+                "past_lesson": past_lesson,
             },
         )
 
