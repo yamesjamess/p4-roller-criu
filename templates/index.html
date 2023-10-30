@@ -42,7 +42,7 @@
                                 <a href="{% url 'lesson_detail' lesson.slug %}" class="lesson-link">
                                     <h2 class="card-title mt-2">{{ lesson.title|title }}</h2>
                                 </a>
-                                <p class="card-text lesson-time-label">Lesson Time: <span
+                                <p class="card-text lesson-time-label">Lesson Start Time: <span
                                         class="lesson-time">{{ lesson.lesson_start|date:"jS M Y, H:i a" }}</span></p>
                                 <p class="card-text lesson-duration-label">Duration: <span
                                         class="lesson-duration">{{ lesson.duration }} hr</span></p>
