@@ -8,7 +8,7 @@ class FeedbackForm(forms.ModelForm):
 
     Attributes:
         Meta (class):
-            model (class): The model class associated with this form (Feedback).
+            model (class): The model class associated with this form (Feedback)
             fields (tuple): The fields from the model to include in the form.
     """
 

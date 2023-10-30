@@ -17,18 +17,22 @@ class Coach(models.Model):
         email (EmailField): The email address of the coach.
         bio (CharField): A brief bio of the coach.
         image (CloudinaryField): An image representing the coach.
-        specialization (CharField): The specialization of the coach (choices defined).
-        years_of_experience (PositiveIntegerField): Years of coaching experience.
-        status (IntegerField): The status of the coach (0 for Draft, 1 for Published).
+        specialization (CharField): The specialization of the coach
+            (choices defined).
+        years_of_experience (PositiveIntegerField): Years of coaching
+            experience.
+        status (IntegerField): The status of the coach (0 for Draft,
+            1 for Published).
 
     Meta:
         ordering (list): The default sorting order for coaches.
-        verbose_name_plural (str): The plural name for this model in the admin panel.
+        verbose_name_plural (str): The plural name for this model in the admin
+            panel.
 
     Methods:
         __str__(): Returns a string representation of the coach.
     """
-    
+
     RECREATIONAL = 'recreational'
     FREESTYLE = 'freestyle'
     DANCE = 'dance'
@@ -75,10 +79,12 @@ class Lesson(models.Model):
         coach (ForeignKey): The coach associated with the lesson.
         content (TextField): Description of the lesson.
         featured_image (CloudinaryField): An image representing the lesson.
-        status (IntegerField): The status of the lesson (0 for Draft, 1 for Published).
+        status (IntegerField): The status of the lesson (0 for Draft,
+            1 for Published).
         likes (ManyToManyField): Users who have liked the lesson.
         created_on (DateTimeField): The date and time the lesson was created.
-        updated_on (DateTimeField): The date and time the lesson was last updated.
+        updated_on (DateTimeField): The date and time the lesson was last
+            updated.
 
     Meta:
         ordering (list): The default sorting order for lessons.
@@ -89,7 +95,9 @@ class Lesson(models.Model):
 
     """
 
-    # code from https://adamj.eu/tech/2020/01/27/moving-to-django-3-field-choices-enumeration-types/
+    # code from
+    # https://adamj.eu/tech/2020/01/27/
+    # moving-to-django-3-field-choices-enumeration-types/
     BEGINNER = 'beginner'
     INTERMEDIATE = 'intermediate'
     ADVANCED = 'advanced'
@@ -147,7 +155,7 @@ class Feedback(models.Model):
     Methods:
         __str__(): Returns a string representation of the feedback.
     """
-    
+
     lesson = models.ForeignKey(
         Lesson, on_delete=models.CASCADE, related_name='feedbacks')
     username = models.ForeignKey(
@@ -172,7 +180,8 @@ class Booking(models.Model):
         lesson (ForeignKey): The lesson being booked.
         username (ForeignKey): The user making the booking.
         places_reserved (IntegerField): The number of places reserved.
-        approved (CharField): The approval status of the booking (choices defined).
+        approved (CharField): The approval status of the booking
+            (choices defined).
 
     Methods:
         __str__(): Returns a string representation of the booking.
@@ -208,7 +217,8 @@ class Contact(models.Model):
 
     Meta:
         ordering (list): The default sorting order for contact messages.
-        verbose_name_plural (str): The plural name for this model in the admin panel.
+        verbose_name_plural (str): The plural name for this model in the
+            admin panel.
 
     Methods:
         __str__(): Returns a string representation of the contact message.

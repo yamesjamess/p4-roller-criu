@@ -6,15 +6,17 @@ from .models import Coach, Lesson, Feedback, Booking, Contact
 @admin.register(Coach)
 class CoachAdmin(SummernoteModelAdmin):
     """
-    Admin class for the Coach model. This class extends SummernoteModelAdmin to enable
-    rich text editing for the 'bio' field.
+    Admin class for the Coach model. This class extends SummernoteModelAdmin
+    to enable rich text editing for the 'bio' field.
 
     Attributes:
-        list_filter (tuple): Fields available for filtering in the admin list view.
+        list_filter (tuple): Fields available for filtering in the admin list
+            view.
         list_display (tuple): Fields to display in the admin list view.
         list_display_links (tuple): Fields to use as links in the list view.
         search_fields (list): Fields to search for in the admin list view.
-        summernote_fields (tuple): Fields to enable the Summernote rich text editor for.
+        summernote_fields (tuple): Fields to enable the Summernote rich text
+            editor for.
     """
 
     list_filter = ('first_name', 'last_name', 'specialization')
@@ -28,16 +30,19 @@ class CoachAdmin(SummernoteModelAdmin):
 @admin.register(Lesson)
 class LessonAdmin(SummernoteModelAdmin):
     """
-    Admin class for the Lesson model. This class extends SummernoteModelAdmin to enable
-    rich text editing for the 'content' field.
+    Admin class for the Lesson model. This class extends SummernoteModelAdmin
+    to enable rich text editing for the 'content' field.
 
     Attributes:
-        list_filter (tuple): Fields available for filtering in the admin list view.
+        list_filter (tuple): Fields available for filtering in the admin list
+            view.
         list_display (tuple): Fields to display in the admin list view.
         list_display_links (tuple): Fields to use as links in the list view.
         search_fields (list): Fields to search for in the admin list view.
-        prepopulated_fields (dict): Fields to automatically populate based on other fields.
-        summernote_fields (tuple): Fields to enable the Summernote rich text editor for.
+        prepopulated_fields (dict): Fields to automatically populate based on
+            other fields.
+        summernote_fields (tuple): Fields to enable the Summernote rich text
+            editor for.
     """
 
     list_filter = ('status', 'created_on')
@@ -56,10 +61,12 @@ class FeedbackAdmin(admin.ModelAdmin):
 
     Attributes:
         list_display (tuple): Fields to display in the admin list view.
-        list_filter (tuple): Fields available for filtering in the admin list view.
+        list_filter (tuple): Fields available for filtering in the admin list
+            view.
         list_display_links (tuple): Fields to use as links in the list view.
         search_fields (list): Fields to search for in the admin list view.
-        actions (list): Custom admin actions available for bulk processing of feedback.
+        actions (list): Custom admin actions available for bulk processing of
+            feedback.
 
     Methods:
         approved_feedback(request, queryset):
@@ -92,7 +99,8 @@ class FeedbackAdmin(admin.ModelAdmin):
 
         Args:
             request (HttpRequest): The request object.
-            queryset (QuerySet): Selected feedback objects to mark as unapproved.
+            queryset (QuerySet): Selected feedback objects to mark as
+                unapproved.
         """
 
         queryset.update(approved=False)
@@ -106,9 +114,11 @@ class BookingAdmin(admin.ModelAdmin):
     Attributes:
         list_display (tuple): Fields to display in the admin list view.
         list_display_links (tuple): Fields to use as links in the list view.
-        list_filter (tuple): Fields available for filtering in the admin list view.
+        list_filter (tuple): Fields available for filtering in the admin list
+            view.
         search_fields (tuple): Fields to search for in the admin list view.
-        actions (list): Custom admin actions available for bulk processing of bookings.
+        actions (list): Custom admin actions available for bulk processing of
+            bookings.
 
     Methods:
         approve_booking(request, queryset):
@@ -154,7 +164,8 @@ class ContactAdmin(admin.ModelAdmin):
 
     Attributes:
         list_display (tuple): Fields to display in the admin list view.
-        list_filter (tuple): Fields available for filtering in the admin list view.
+        list_filter (tuple): Fields available for filtering in the admin list
+            view.
         list_display_links (tuple): Fields to use as links in the list view.
         search_fields (list): Fields to search for in the admin list view.
     """

@@ -57,7 +57,8 @@ class TestModels(TestCase):
     # test the __str__ method for Coach
     def test_coach_str(self):
         self.assertEqual(
-            str(self.coach), f'Coach {self.coach.first_name} {self.coach.last_name}')
+            str(self.coach),
+            f'Coach {self.coach.first_name} {self.coach.last_name}')
 
     # test the __str__ method for Lesson
     def test_lesson_str(self):
@@ -66,31 +67,33 @@ class TestModels(TestCase):
     # test the __str__ method for Feedback
     def test_feedback_str(self):
         self.assertEqual(
-            str(self.feedback), f'Feedback {self.feedback.body} by {self.user.username}')
+            str(self.feedback),
+            f'Feedback {self.feedback.body} by {self.user.username}')
 
     # test the __str__ method for Booking
     def test_booking_str(self):
         self.assertEqual(
-            str(self.booking), f'{self.booking.lesson} is booked by {self.user.username}')
+            str(self.booking),
+            f'{self.booking.lesson} is booked by {self.user.username}')
 
     # test the __str__ method for Contact
     def test_contact_str(self):
         self.assertEqual(str(
-            self.contact), f'Contact message submitted by {self.contact.name} on {self.contact.created_on}')
+            self.contact),
+            f'Contact message submitted by {self.contact.name} on
+            {self.contact.created_on}')
 
     # test default values in Coach
     def test_coach_default_values(self):
         self.assertEqual(self.coach.image, 'placeholder')
         self.assertEqual(self.coach.specialization, 'recreational')
-        # note this should be pass after next resetting of database and remigrate
-        # self.assertEqual(self.coach.years_of_experience, 1)
+        self.assertEqual(self.coach.years_of_experience, 1)
         self.assertEqual(self.coach.status, 0)
 
     # test years of experience is a positive integer in Coach
-    # note this should be pass after next resetting of database and remigrate
-    # def test_coach__yoe_is_positive_integer(self):
-    #     self.assertTrue(self.coach.years_of_experience >= 0)
-    #     self.assertFalse(self.coach.years_of_experience <= 0)
+    def test_coach__yoe_is_positive_integer(self):
+        self.assertTrue(self.coach.years_of_experience >= 0)
+        self.assertFalse(self.coach.years_of_experience <= 0)
 
     # test number of likes in Lesson
     def test_lesson_number_of_likes(self):

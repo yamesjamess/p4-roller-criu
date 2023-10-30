@@ -32,7 +32,8 @@ class LessonList(generic.ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["page_title"] = "Learn to become an artistic roller skater with us"
+        context['page_title'] = \
+            'Learn to become an artistic roller skater with us'
         return context
 
 
@@ -69,7 +70,8 @@ class Contact(CreateView):
         model (class): The model to create (Contact).
         form_class (class): The form class for contact messages (ContactForm).
         template_name (str): The name of the template to render.
-        success_url (str): The URL to redirect to upon successful form submission.
+        success_url (str): The URL to redirect to upon successful form
+            submission.
 
     Methods:
         get_context_data(**kwargs): Adds additional context data to the view.
@@ -91,9 +93,12 @@ class LessonDetail(View):
     View for displaying details about a lesson.
 
     Methods:
-        get(request, slug, *args, **kwargs): Handles GET requests for lesson details.
-        post(request, slug, *args, **kwargs): Handles POST requests for lesson details.
-        user_has_booked(user, lesson): Checks if the user has already booked the lesson.
+        get(request, slug, *args, **kwargs): Handles GET requests for lesson
+            details.
+        post(request, slug, *args, **kwargs): Handles POST requests for lesson
+            details.
+        user_has_booked(user, lesson): Checks if the user has already booked
+            the lesson.
     """
 
     def get(self, request, slug, *args, **kwargs):
@@ -146,7 +151,7 @@ class LessonDetail(View):
             liked = True
 
         if user.is_authenticated:
-            if "feedback_submit" in request.POST:  # Check if feedback form is submitted
+            if "feedback_submit" in request.POST:
                 feedback_form = FeedbackForm(data=request.POST)
                 if feedback_form.is_valid():
                     feedback_form.instance.email = request.user.email
@@ -164,10 +169,11 @@ class LessonDetail(View):
                 # User has already made a booking, return an error response
                 messages.error(
                     request,
-                    "You have already booked this lesson! Please check My Bookings page.",
+                    "You have already booked this lesson!"
+                    "Please check My Bookings page.",
                 )
             else:
-                if "booking_submit" in request.POST:  # Check if booking form is submitted
+                if "booking_submit" in request.POST:
                     booking_form = BookingForm(data=request.POST)
                     if booking_form.is_valid():
                         booking = booking_form.save(commit=False)
@@ -205,7 +211,8 @@ class LessonLike(LoginRequiredMixin, View):
     View for handling lesson likes.
 
     Methods:
-        post(request, slug, *args, **kwargs): Handles POST requests for liking/unliking lessons.
+        post(request, slug, *args, **kwargs): Handles POST requests
+            for liking/unliking lessons.
     """
 
     def post(self, request, slug, *args, **kwargs):
@@ -225,7 +232,8 @@ class MyBookings(LoginRequiredMixin, View):
 
     Methods:
         get(request, *args, **kwargs): Handles GET requests for user bookings.
-        post(request, *args, **kwargs): Handles POST requests for canceling user bookings.
+        post(request, *args, **kwargs): Handles POST requests for canceling
+            user bookings.
     """
 
     def get(self, request, *args, **kwargs):
