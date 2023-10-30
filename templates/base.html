@@ -28,7 +28,7 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
 </head>
 
@@ -50,97 +50,86 @@
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     {% if request.resolver_match.url_name == 'home' %}
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page"
-                                href="{% url 'home' %}">Home</a>
-                        </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+                    </li>
                     {% else %}
-                        <li class="nav-item">
-                            <a class="nav-link" aria-current="page" 
-                                href="{% url 'home' %}">Home</a>
-                        </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="{% url 'home' %}">Home</a>
+                    </li>
                     {% endif %}
                     {% if request.resolver_match.url_name == 'about' %}
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page"
-                                class="nav-link" href="{% url 'about' %}">About</a>
-                        </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'about' %}">About</a>
+                    </li>
                     {% else %}
-                        <li class="nav-item">
-                            <a class="nav-link" aria-current="page" 
-                                href="{% url 'about' %}">About</a>
-                        </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="{% url 'about' %}">About</a>
+                    </li>
                     {% endif %}
                     {% if request.resolver_match.url_name == 'contact' %}
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page"
-                                href="{% url 'contact' %}">Contact</a>
-                        </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'contact' %}">Contact</a>
+                    </li>
                     {% else %}
-                        <li class="nav-item">
-                            <a class="nav-link" aria-current="page"
-                                href="{% url 'contact' %}">Contact</a>
-                        </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="{% url 'contact' %}">Contact</a>
+                    </li>
                     {% endif %}
                     <!-- show these nav items if the user is logged in and is not a staff member -->
                     {% if user.is_authenticated and not user.is_staff %}
-                        {% if request.resolver_match.url_name == 'my_bookings' %}
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page"
-                                href="{% url 'my_bookings' %}">My Bookings</a>
-                        </li>
-                        {% else %}
-                        <li class="nav-item">
-                            <a class="nav-link" aria-current="page"
-                                href="{% url 'my_bookings' %}">My Bookings</a>
-                        </li>
-                        {% endif %}
-                        </ul>
-
-                        <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
-                        {% if request.resolver_match.url_name == 'account_logout' %}
-                        <li class="nav-item">
-                            <a class="nav-link active" href="{% url 'account_logout' %}">Logout</a>
-                        </li>
-                        {% else %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
-                        </li>
-                        </ul>
-                        {% endif %}
-                    <!-- show these nav items if the user is logged in and is a staff member -->
-                    {% elif user.is_authenticated and user.is_staff %}
-                        {% if request.resolver_match.url_name == 'my_bookings' %}
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page"
-                                href="{% url 'my_bookings' %}">My Bookings</a>
-                        </li>
-                        {% else %}
-                        <li class="nav-item">
-                            <a class="nav-link" aria-current="page"
-                                href="{% url 'my_bookings' %}">My Bookings</a>
-                        </li>
-                        {% endif %}
-                        </ul>
-
-                        <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a  class="nav-link" aria-current="page"
-                                href="{% url 'admin:index' %}">Admin</a>
-                        </li>
-                        {% if request.resolver_match.url_name == 'account_logout' %}
-                        <li class="nav-item">
-                            <a class="nav-link active" href="{% url 'account_logout' %}">Logout</a>
-                        </li>
-                        {% else %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
-                        </li>
-                        {% endif %}
-                        </ul>
+                    {% if request.resolver_match.url_name == 'my_bookings' %}
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'my_bookings' %}">My Bookings</a>
+                    </li>
                     {% else %}
-                    </ul>
-                    <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="{% url 'my_bookings' %}">My Bookings</a>
+                    </li>
+                    {% endif %}
+                </ul>
+
+                <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+                    {% if request.resolver_match.url_name == 'account_logout' %}
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{% url 'account_logout' %}">Logout</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
+                    </li>
+                </ul>
+                {% endif %}
+                <!-- show these nav items if the user is logged in and is a staff member -->
+                {% elif user.is_authenticated and user.is_staff %}
+                {% if request.resolver_match.url_name == 'my_bookings' %}
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'my_bookings' %}">My Bookings</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="{% url 'my_bookings' %}">My Bookings</a>
+                </li>
+                {% endif %}
+                </ul>
+
+                <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="{% url 'admin:index' %}">Admin</a>
+                    </li>
+                    {% if request.resolver_match.url_name == 'account_logout' %}
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{% url 'account_logout' %}">Logout</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
+                    </li>
+                    {% endif %}
+                </ul>
+                {% else %}
+                </ul>
+                <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
                     {% if request.resolver_match.url_name == 'account_signup' %}
                     <li class="nav-item">
                         <a class="nav-link active" href="{% url 'account_signup' %}">Register</a>
@@ -159,9 +148,9 @@
                         <a class="nav-link" href="{% url 'account_login' %}">Login</a>
                     </li>
                     {% endif %}
-                    </ul>
-                    {% endif %}
-                
+                </ul>
+                {% endif %}
+
             </div>
         </div>
     </nav>
@@ -189,22 +178,23 @@
     <!-- Footer -->
     <footer class="footer mt-auto py-3">
 
-            <p class="m-0 text-center footer-socials">Find us on:
-                <a href="https://facebook.com" target="_blank" rel="noopener"
+        <p class="m-0 text-center footer-socials">Find us on:
+            <a href="https://facebook.com" target="_blank" rel="noopener"
                 aria-label="Visit our Facebook page (opens in a new tab)">
                 <i class="fab fa-facebook-square ms-3"></i></a>
 
-                <a href="https://twitter.com" target="_blank" rel="noopener"
+            <a href="https://twitter.com" target="_blank" rel="noopener"
                 aria-label="Visit our Twitter page (opens in a new tab)">
                 <i class="fab fa-twitter-square ms-3"></i></a>
 
-                <a href="https://instagram.com" target="_blank" rel="noopener"
+            <a href="https://instagram.com" target="_blank" rel="noopener"
                 aria-label="Visit our Instagram page (opens in a new tab)">
                 <i class="fab fa-instagram-square ms-3"></i></a>
-            </p>
-            <p class="m-0 mt-2 text-center footer-text">This website is for educational purposes only</p>
+        </p>
+        <p class="m-0 mt-2 text-center footer-text">This website is for educational purposes only</p>
 
     </footer>
-<script src="{% static 'js/script.js' %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
 </body>
+
 </html>

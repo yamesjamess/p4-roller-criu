@@ -24,10 +24,11 @@
                             <div class="col-auto">
                                 {% if "placeholder" in booking.lesson.featured_image.url %}
                                 <img class="booking-img d-none d-md-inline-block"
-                                    src="https://res.cloudinary.com/dukqu7lia/image/upload/v1696354385/placeholder.jpg">
+                                    src="https://res.cloudinary.com/dukqu7lia/image/upload/v1696354385/placeholder.jpg"
+                                    alt="Default Lesson image">
                                 {% else %}
-                                <img src="{{ booking.lesson.featured_image.url }}"
-                                    class="booking-img d-none d-md-block">
+                                <img src="{{ booking.lesson.featured_image.url }}" class="booking-img d-none d-md-block"
+                                    alt="{{ lesson.location|title }}">
                                 {% endif %}
                             </div>
                         </a>
@@ -103,10 +104,11 @@
                             <div class="col-auto">
                                 {% if "placeholder" in booking.lesson.featured_image.url %}
                                 <img class="booking-img d-none d-md-inline-block"
-                                    src="https://res.cloudinary.com/dukqu7lia/image/upload/v1696354385/placeholder.jpg">
+                                    src="https://res.cloudinary.com/dukqu7lia/image/upload/v1696354385/placeholder.jpg"
+                                    alt="Default Lesson image">
                                 {% else %}
-                                <img src="{{ booking.lesson.featured_image.url }}"
-                                    class="booking-img d-none d-md-block">
+                                <img src="{{ booking.lesson.featured_image.url }}" class="booking-img d-none d-md-block"
+                                    alt="{{ lesson.location|title }}">
                                 {% endif %}
                             </div>
                         </a>

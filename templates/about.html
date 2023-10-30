@@ -14,18 +14,22 @@
     <div class="row">
         <div class="col-lg-8 mt-3 left about-text">
             <h3>How we got started</h3>
-            <p class="indented-paragraph"><span class="highlighted-text">Roller Criú</span>, a pioneering roller skating initiative, was born out of <span class="highlighted-text">Roisin Smith's</span> passion and
+            <p class="indented-paragraph"><span class="highlighted-text">Roller Criú</span>, a pioneering roller skating
+                initiative, was born out of <span class="highlighted-text">Roisin Smith's</span> passion and
                 determination in the year 2020. Faced with the frustrating realization that there was no formal
                 establishment dedicated to teaching the art of roller skating, Roisin decided to take matters into her
                 own hands. Fuelled by her love for roller skating and a desire to share it with others, she founded
-                <span class="highlighted-text">Roller Criú</span>. This unique venture was designed to cater to everyone, from those taking their first
+                <span class="highlighted-text">Roller Criú</span>. This unique venture was designed to cater to
+                everyone, from those taking their first
                 tentative steps on wheels to those aiming for competition-level skills. Through a combination of
-                dedication, innovative teaching methods, and a welcoming atmosphere, <span class="highlighted-text">Roller Criú</span> has since become a
+                dedication, innovative teaching methods, and a welcoming atmosphere, <span
+                    class="highlighted-text">Roller Criú</span> has since become a
                 thriving community and a go-to destination for roller skaters of all levels, ensuring that the joy of
                 roller skating is accessible to all.</p>
         </div>
         <div class="col-lg-4 mt-3 right">
-            <img src="https://res.cloudinary.com/dukqu7lia/image/upload/v1697368013/roisin_smith_feature.jpg" alt="" class="img-fluid founder-image">
+            <img src="https://res.cloudinary.com/dukqu7lia/image/upload/v1697368013/roisin_smith_feature.jpg"
+                alt="Image of Founder & Head Coach Roisin Smith" class="img-fluid founder-image">
             <p class="mt-3"><span class="highlighted-text">Roisin Smith</span> | Founder & Head Coach</p>
         </div>
     </div>
@@ -48,9 +52,11 @@
                             <div class="coach-image image-container">
                                 {% if "placeholder" in coach.image.url %}
                                 <img class="card-img-top"
-                                    src="https://res.cloudinary.com/dukqu7lia/image/upload/v1697297007/coach_placeholder.png">
+                                    src="https://res.cloudinary.com/dukqu7lia/image/upload/v1697297007/coach_placeholder.png"
+                                    alt="Placeholder coach image">
                                 {% else %}
-                                <img class="card-img-top" src=" {{ coach.image.url }} ">
+                                <img class="card-img-top" src=" {{ coach.image.url }} "
+                                    alt="Image of Coach {{ coach.first_name}} {{ coach.last_name}}">
                                 {% endif %}
                                 <p class="card-text my-2"><span class="about-coach-name">{{ coach.first_name }}
                                         {{ coach.last_name }}</span>

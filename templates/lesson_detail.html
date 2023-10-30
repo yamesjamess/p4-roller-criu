@@ -1,4 +1,4 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
 {% load static %}
 {% load tz %}
 {% block content %}
@@ -8,13 +8,14 @@
 <div class="masthead">
     <div class="container-fluid">
         <div class="row g-3">
-            <div class="d-block col-lg-8 masthead-image img-fluid">
+            <div class="d-block col-lg-8 masthead-image-container img-fluid">
                 <!-- to display placeholder image if feautre image was not uploaded -->
                 {% if "placeholder" in lesson.featured_image.url %}
-                <img src="https://res.cloudinary.com/dukqu7lia/image/upload/v1696354385/placeholder.jpg" width="100%"
-                    height="100%">
+                <img class="masthead-image"
+                    src="https://res.cloudinary.com/dukqu7lia/image/upload/v1696354385/placeholder.jpg"
+                    alt="Default Lesson image">
                 {% else %}
-                <img src=" {{ lesson.featured_image.url }} " width="100%">
+                <img class="masthead-image" src=" {{ lesson.featured_image.url }} " alt="{{ lesson.location|title }}">
                 {% endif %}
             </div>
             <div class="d-lg-block col-lg-4 masthead-coach">
@@ -22,9 +23,10 @@
                     {% if "placeholder" in coach.image.url %}
                     <!-- to display placeholder image if feautre image was not uploaded -->
                     <img src="https://res.cloudinary.com/dukqu7lia/image/upload/v1697297007/coach_placeholder.png"
-                        class="img" width="100%">
+                        class="img" alt="Placeholder coach image">
                     {% else %}
-                    <img class="img-fluid coach-image" src=" {{ coach.image.url }} " width="100%">
+                    <img class="img-fluid coach-image" src=" {{ coach.image.url }} "
+                        alt="Image of Coach {{ coach.first_name}} {{ coach.last_name}}">
                     {% endif %}</div>
                 <div class="d-lg-block coach-text m-3">
                     <h4 class="coach-name">Coach {{ coach.first_name }}</h4>
@@ -32,34 +34,40 @@
                 </div>
                 <hr>
                 {% if user.is_authenticated %}
-                        {% if not has_booking %}
-                        <div class="masthead-booking">
-                            <h5>Booking for: </h5>
-                            <p>{{ user.username }}</p>
-                            <form method="POST">
-                                {% csrf_token %}
-                                <div class="form-group" id="booking-form-elements">
-                                    <label for="{{ booking_form.places_reserved.id_for_label }}" class="col-form-label">Number of Places Reserved*</label>
-                                    <select class="form-select" name="places_reserved" id="{{ booking_form.places_reserved.id_for_label }}">
-                                        <!-- One user can only reserve one slot per lesson -->
-                                        <option value="1" selected>1</option>
-                                    </select>
-                                </div>
-                                <button type="submit" id="booking-button" class="btn btn-lg booking-button rounded-pill px-5 my-3">Book!</button>
-                            </form>
+                {% if not has_booking %}
+                <div class="masthead-booking">
+                    <h5>Booking for: </h5>
+                    <p>{{ user.username }}</p>
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="form-group" id="booking-form-elements">
+                            <label for="{{ booking_form.places_reserved.id_for_label }}" class="col-form-label">Number
+                                of Places Reserved*</label>
+                            <select class="form-select" name="places_reserved"
+                                id="{{ booking_form.places_reserved.id_for_label }}">
+                                <!-- One user can only reserve one slot per lesson -->
+                                <option value="1" selected>1</option>
+                            </select>
                         </div>
-                        {% else %}
-                        <div class="masthead-booking">
-                            <h5>You have already submitted a booking this lesson!</h5>
-                            <p>Please check <a href="{% url 'my_bookings' %}"><strong class="highlighted-text">'My Bookings'</strong></a> for booking status</p>
-                            <button type="submit" class="btn btn-lg booking-button rounded-pill px-5 my-3" disabled>Book!</button>
-                        </div>
-                        {% endif %}
+                        <button type="submit" id="booking-button"
+                            class="btn btn-lg booking-button rounded-pill px-5 my-3">Book!</button>
+                    </form>
+                </div>
                 {% else %}
-                    <div class="masthead-booking">
-                        <h5>Please Sign in to book this lesson!</h5>
-                        <button type="submit" class="btn btn-lg booking-button rounded-pill px-5 my-3" disabled>Book!</button>
-                    </div>
+                <div class="masthead-booking">
+                    <h5>You have already submitted a booking this lesson!</h5>
+                    <p>Please check <a href="{% url 'my_bookings' %}"><strong class="highlighted-text">'My
+                                Bookings'</strong></a> for booking status</p>
+                    <button type="submit" class="btn btn-lg booking-button rounded-pill px-5 my-3"
+                        disabled>Book!</button>
+                </div>
+                {% endif %}
+                {% else %}
+                <div class="masthead-booking">
+                    <h5>Please Sign in to book this lesson!</h5>
+                    <button type="submit" class="btn btn-lg booking-button rounded-pill px-5 my-3"
+                        disabled>Book!</button>
+                </div>
                 {% endif %}
             </div>
         </div>
@@ -84,12 +92,14 @@
             </div>
             {% endif %}
             <h2 class="lesson-title p-2 mt-2">{{ lesson.title|title }}</h2>
-            <p class="lesson-time-label">Start time: <span class="lesson-time">{{ lesson.lesson_start|date:"jS M Y, H:i a" }}</span></p>
+            <p class="lesson-time-label">Start time: <span
+                    class="lesson-time">{{ lesson.lesson_start|date:"jS M Y, H:i a" }}</span></p>
             <p class="lesson-duration-label">Duration: <span class="lesson-duration">{{ lesson.duration }}</span></p>
-            <p class="lesson-location-label">Location: <span class="lesson-location">{{ lesson.location|title }}</span></p>
+            <p class="lesson-location-label">Location: <span class="lesson-location">{{ lesson.location|title }}</span>
+            </p>
 
             <!-- safe filter is used to make sure the conten is being displayed -->
-            <span class="card-text lesson-description">{{ lesson.content | safe }}</span>
+            <div class="card-text lesson-description">{{ lesson.content | safe }}</div>
         </div>
 
     </div>
@@ -102,7 +112,7 @@
                 <div class="row">
                     <!-- Likes -->
                     <div class="col-1">
-                        <strong>
+                        <div>
                             {% if user.is_authenticated %}
                             <form class="d-inline" action="{% url 'lesson_like' lesson.slug %}" method="POST">
                                 {% csrf_token %}
@@ -117,9 +127,8 @@
                             {% else %}
                             <span class="text-secondary"><i class="far fa-heart"></i></span>
                             {% endif %}
-                            <!-- The number of likes goes before the closing strong tag -->
                             <span class="text-secondary">{{ lesson.number_of_likes }}</span>
-                        </strong>
+                        </div>
                     </div>
                     <!-- Number of feedbacks -->
                     <div class="col-1">

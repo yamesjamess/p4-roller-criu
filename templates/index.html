@@ -22,9 +22,11 @@
                             <div class="image-container">
                                 {% if "placeholder" in lesson.featured_image.url %}
                                 <img class="card-img-top lesson-detail-img"
-                                    src="https://res.cloudinary.com/dukqu7lia/image/upload/v1696354385/placeholder.jpg">
+                                    src="https://res.cloudinary.com/dukqu7lia/image/upload/v1696354385/placeholder.jpg"
+                                    alt="Default Lesson image">
                                 {% else %}
-                                <img class="card-img-top lesson-detail-img" src=" {{ lesson.featured_image.url }} ">
+                                <img class="card-img-top lesson-detail-img" src=" {{ lesson.featured_image.url }} "
+                                    alt="{{ lesson.location|title }}">
                                 {% endif %}
                                 {% if lesson.lesson_level == 'beginner' %}
                                 <div class="image-banner banner-bkgd-beginner">
