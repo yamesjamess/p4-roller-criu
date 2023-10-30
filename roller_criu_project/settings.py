@@ -33,10 +33,10 @@ SECRET_KEY = 'os.environ.get("SECRET_KEY")'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # False for deployment
-# DEBUG = False
+DEBUG = False
 
-# True for local host testing
-DEBUG = True
+# # True for local host testing
+# DEBUG = True
 
 # For summernotes
 X_FRAME_OPTIONS = 'SAMEORIGIN'
