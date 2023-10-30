@@ -342,23 +342,24 @@ a:hover {
 }
 
 .confirmed {
-    outline: 1px solid #198754!important;
     padding: 5px 0;
     max-width: 70%;
+    background-color: #198754;
 
 }
 
 .pending {
-    outline: 1px solid #ffc107!important;
     padding: 5px 0;
     max-width: 70%;
-
+    color: black;
+    background-color: #FFc107;
 }
 
 .unconfirmed {
-    outline: 1px solid #dc3545!important;
     padding: 5px 0;
     max-width: 70%; 
+    background-color: #dc3545;
+    color: black;
 }
 
 @media (min-width: 1200px) {
