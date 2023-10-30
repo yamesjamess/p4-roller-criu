@@ -17,7 +17,7 @@ class TestFeedbackForm(TestCase):
         form_data = {'body': 'This is a test feedback.'}
         form = FeedbackForm(data=form_data)
         self.assertTrue(form.is_valid())
-    
+
     # test to check if form fields are set up correctly
     def test_fields_in_form(self):
         form = FeedbackForm()
@@ -40,7 +40,8 @@ class TestContactForm(TestCase):
         self.assertIn('email', form.errors.keys())
         self.assertEqual(form.errors['email'][0], 'This field is required.')
         self.assertIn('contact_message', form.errors.keys())
-        self.assertEqual(form.errors['contact_message'][0], 'This field is required.')
+        self.assertEqual(form.errors['contact_message']
+                         [0], 'This field is required.')
 
     # test to check if form is valid
     def test_contact_form_valid(self):
@@ -55,7 +56,8 @@ class TestContactForm(TestCase):
     # test to check if form fields are set up correctly
     def test_fields_in_form(self):
         form = ContactForm()
-        self.assertEqual(form.Meta.fields, ('name', 'email', 'contact_message'))
+        self.assertEqual(form.Meta.fields,
+                         ('name', 'email', 'contact_message'))
 
 
 class TestBookingForm(TestCase):

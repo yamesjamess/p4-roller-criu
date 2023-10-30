@@ -22,7 +22,7 @@ class TestAdmin(TestCase):
             username='testuser',
             password='12345',
             email='test@email.com'
-            )
+        )
 
         self.coach = Coach.objects.create(
             first_name='John',
@@ -64,31 +64,36 @@ class TestAdmin(TestCase):
     # test to check if admin can login and get to Coach database page
     def test_coach_admin(self):
         self.client.login(username='admin', password='adminpassword')
-        response = self.client.get(reverse('admin:roller_criu_app_coach_changelist'))
+        response = self.client.get(
+            reverse('admin:roller_criu_app_coach_changelist'))
         self.assertEqual(response.status_code, 200)
 
     # test to check if admin can login and get to Lesson database
     def test_lesson_admin(self):
         self.client.login(username='admin', password='adminpassword')
-        response = self.client.get(reverse('admin:roller_criu_app_lesson_changelist'))
+        response = self.client.get(
+            reverse('admin:roller_criu_app_lesson_changelist'))
         self.assertEqual(response.status_code, 200)
 
     # test to check if admin can login and get to feedback database page
     def test_feedback_admin(self):
         self.client.login(username='admin', password='adminpassword')
-        response = self.client.get(reverse('admin:roller_criu_app_feedback_changelist'))
+        response = self.client.get(
+            reverse('admin:roller_criu_app_feedback_changelist'))
         self.assertEqual(response.status_code, 200)
 
     # test to check if admin can login and get to booking database page
     def test_booking_admin(self):
         self.client.login(username='admin', password='adminpassword')
-        response = self.client.get(reverse('admin:roller_criu_app_booking_changelist'))
+        response = self.client.get(
+            reverse('admin:roller_criu_app_booking_changelist'))
         self.assertEqual(response.status_code, 200)
 
     # test to check if admin can login and get to Contact database page
     def test_contact_admin(self):
         self.client.login(username='admin', password='adminpassword')
-        response = self.client.get(reverse('admin:roller_criu_app_contact_changelist'))
+        response = self.client.get(
+            reverse('admin:roller_criu_app_contact_changelist'))
         self.assertEqual(response.status_code, 200)
 
     # Check if admin user can approve feedback
@@ -106,7 +111,6 @@ class TestAdmin(TestCase):
         )
         feedback = Feedback.objects.get(id=self.feedback.id)
         self.assertTrue(feedback.approved)
-
 
     # Check if admin user can unapprove feedback
     def test_admin_unapprove_feedback(self):
@@ -139,7 +143,7 @@ class TestAdmin(TestCase):
         )
         booking = Booking.objects.get(id=self.booking.id)
         self.assertEqual(booking.approved, 'approved')
-    
+
     # Check if admin user can unapprove booking
     def test_admin_unapprove_booking(self):
         # Create a test booking with approved set to approved

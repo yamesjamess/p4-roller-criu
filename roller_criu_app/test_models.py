@@ -15,7 +15,7 @@ class TestModels(TestCase):
             username='testuser',
             password='12345',
             email='test@email.com'
-            )
+        )
 
         self.coach = Coach.objects.create(
             first_name='John',
@@ -56,7 +56,8 @@ class TestModels(TestCase):
 
     # test the __str__ method for Coach
     def test_coach_str(self):
-        self.assertEqual(str(self.coach), f'Coach {self.coach.first_name} {self.coach.last_name}')
+        self.assertEqual(
+            str(self.coach), f'Coach {self.coach.first_name} {self.coach.last_name}')
 
     # test the __str__ method for Lesson
     def test_lesson_str(self):
@@ -64,24 +65,27 @@ class TestModels(TestCase):
 
     # test the __str__ method for Feedback
     def test_feedback_str(self):
-        self.assertEqual(str(self.feedback), f'Feedback {self.feedback.body} by {self.user.username}')
+        self.assertEqual(
+            str(self.feedback), f'Feedback {self.feedback.body} by {self.user.username}')
 
     # test the __str__ method for Booking
     def test_booking_str(self):
-        self.assertEqual(str(self.booking), f'{self.booking.lesson} is booked by {self.user.username}')
+        self.assertEqual(
+            str(self.booking), f'{self.booking.lesson} is booked by {self.user.username}')
 
     # test the __str__ method for Contact
     def test_contact_str(self):
-        self.assertEqual(str(self.contact), f'Contact message submitted by {self.contact.name} on {self.contact.created_on}')
+        self.assertEqual(str(
+            self.contact), f'Contact message submitted by {self.contact.name} on {self.contact.created_on}')
 
     # test default values in Coach
     def test_coach_default_values(self):
         self.assertEqual(self.coach.image, 'placeholder')
         self.assertEqual(self.coach.specialization, 'recreational')
         # note this should be pass after next resetting of database and remigrate
-        # self.assertEqual(self.coach.years_of_experience, 1) 
+        # self.assertEqual(self.coach.years_of_experience, 1)
         self.assertEqual(self.coach.status, 0)
-    
+
     # test years of experience is a positive integer in Coach
     # note this should be pass after next resetting of database and remigrate
     # def test_coach__yoe_is_positive_integer(self):
@@ -91,7 +95,7 @@ class TestModels(TestCase):
     # test number of likes in Lesson
     def test_lesson_number_of_likes(self):
         self.assertEqual(self.lesson.number_of_likes(), 0)
-    
+
     # test default values in Lesson
     def test_lesson_default_level(self):
         self.assertEqual(self.lesson.lesson_level, 'beginner')
@@ -120,7 +124,8 @@ class TestModels(TestCase):
 
         current_datetime = timezone.now()
         tolerance = timezone.timedelta(seconds=1)
-        self.assertLessEqual(abs(self.feedback.created_on - current_datetime), tolerance)
+        self.assertLessEqual(
+            abs(self.feedback.created_on - current_datetime), tolerance)
 
     # test default values in Booking
     def test_booking_default_values(self):
@@ -134,4 +139,5 @@ class TestModels(TestCase):
     def test_contact_default_values(self):
         current_datetime = timezone.now()
         tolerance = timezone.timedelta(seconds=1)
-        self.assertLessEqual(abs(self.contact.created_on - current_datetime), tolerance)
+        self.assertLessEqual(
+            abs(self.contact.created_on - current_datetime), tolerance)

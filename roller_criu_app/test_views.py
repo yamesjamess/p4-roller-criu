@@ -15,7 +15,7 @@ class TestViews(TestCase):
             username='testuser',
             password='12345',
             email='test@email.com'
-            )
+        )
 
         self.coach = Coach.objects.create(
             first_name='John',
@@ -92,7 +92,8 @@ class TestViews(TestCase):
     # get lesson detail page and check if correct templates are being used
     def test_get_lesson_detail_page(self):
         self.client.login(username='testuser', password='12345')
-        response = self.client.get(reverse('lesson_detail', args=(self.lesson.slug,)))
+        response = self.client.get(
+            reverse('lesson_detail', args=(self.lesson.slug,)))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'base.html')
         self.assertTemplateUsed(response, 'lesson_detail.html')
@@ -101,7 +102,8 @@ class TestViews(TestCase):
     def test_can_toggle_like_lesson(self):
         self.client.login(username='testuser', password='12345')
 
-        response = self.client.get(reverse('lesson_detail', args=(self.lesson.slug,)))
+        response = self.client.get(
+            reverse('lesson_detail', args=(self.lesson.slug,)))
 
         numlikes = self.lesson.number_of_likes()
         self.assertEqual(numlikes, 0)
@@ -123,17 +125,20 @@ class TestViews(TestCase):
     def test_can_leave_feedback(self):
         self.client.login(username='testuser', password='12345')
 
-        response = self.client.get(reverse('lesson_detail', args=(self.lesson.slug,)))
+        response = self.client.get(
+            reverse('lesson_detail', args=(self.lesson.slug,)))
         self.assertEqual(response.status_code, 200)
 
-        response = self.client.post(reverse('lesson_detail', args=(self.lesson.slug,)), data={'body': 'test feedback'})
+        response = self.client.post(reverse('lesson_detail', args=(
+            self.lesson.slug,)), data={'body': 'test feedback'})
         self.assertEqual(response.status_code, 200)
 
     # check if user can cancel/delete booking
     def test_cancel_booking_success(self):
         self.client.login(username='testuser', password='12345')
 
-        response = self.client.post(reverse('my_bookings'), {'booking_id': self.booking.id})
+        response = self.client.post(reverse('my_bookings'), {
+                                    'booking_id': self.booking.id})
         self.assertEqual(response.status_code, 302)
         self.assertFalse(Booking.objects.filter(id=self.booking.id).exists())
 
@@ -141,8 +146,10 @@ class TestViews(TestCase):
     def test_user_can_book_lesson(self):
         self.client.login(username='testuser', password='12345')
 
-        response = self.client.get(reverse('lesson_detail', args=(self.lesson.slug,)))
+        response = self.client.get(
+            reverse('lesson_detail', args=(self.lesson.slug,)))
         self.assertEqual(response.status_code, 200)
 
-        response = self.client.post(reverse('lesson_detail', args=(self.lesson.slug,)), data={'places_reserved': 1})
-        self.assertEqual(response.status_code, 200)                                                                                     
+        response = self.client.post(reverse('lesson_detail', args=(
+            self.lesson.slug,)), data={'places_reserved': 1})
+        self.assertEqual(response.status_code, 200)
