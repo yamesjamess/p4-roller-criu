@@ -36,7 +36,7 @@ class TestViews(TestCase):
             location='Test Location 1',
             coach=self.coach,
             content='Test content for lesson 1',
-            status=0
+            status=1
         )
 
         self.feedback = Feedback.objects.create(
@@ -90,19 +90,44 @@ class TestViews(TestCase):
         self.assertTemplateUsed(response, 'my_bookings.html')
 
     # get lesson detail page and check if correct templates are being used
-    # def test_get_lesson_detail_page(self):
-    #     self.client.login(username='testuser', password='12345')
-    #     lesson_slug = self.lesson.slug
-    #     print(lesson_slug)
-    #     response = self.client.get(reverse('lesson_detail', kwargs={'slug': 'test-lesson-1'}))
-    #     self.assertEqual(response.status_code, 200)
+    def test_get_lesson_detail_page(self):
+        self.client.login(username='testuser', password='12345')
+        response = self.client.get(reverse('lesson_detail', args=(self.lesson.slug,)))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'base.html')
+        self.assertTemplateUsed(response, 'lesson_detail.html')
 
     # check if the user can toggle like and unlike
-    # def test_can_toggle_like_lesson(self):
+    def test_can_toggle_like_lesson(self):
+        self.client.login(username='testuser', password='12345')
 
+        response = self.client.get(reverse('lesson_detail', args=(self.lesson.slug,)))
+
+        numlikes = self.lesson.number_of_likes()
+        self.assertEqual(numlikes, 0)
+
+        like_url = reverse('lesson_like', args=(self.lesson.slug,))
+        response = self.client.post(like_url)
+
+        self.assertEqual(response.status_code, 302)
+        self.lesson.refresh_from_db()
+        self.assertEqual(self.lesson.number_of_likes(), 1)
+
+        response = self.client.post(like_url)
+
+        self.assertEqual(response.status_code, 302)
+        self.lesson.refresh_from_db()
+        self.assertEqual(self.lesson.number_of_likes(), 0)
 
     # check if user can leave a feedback
-    # def test_can_leave_feedback(self):
+    def test_can_leave_feedback(self):
+        self.client.login(username='testuser', password='12345')
+
+        response = self.client.get(reverse('lesson_detail', args=(self.lesson.slug,)))
+        self.assertEqual(response.status_code, 200)
+
+        response = self.client.post(reverse('lesson_detail', args=(self.lesson.slug,)), data={'body': 'test feedback'})
+        self.assertEqual(response.status_code, 200)
 
     # check if user can cancel/delete booking
     def test_cancel_booking_success(self):
