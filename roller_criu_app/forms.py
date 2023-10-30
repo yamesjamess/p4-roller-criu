@@ -41,7 +41,7 @@ class BookingForm(forms.ModelForm):
             model (class): The model class associated with this form (Booking).
             fields (tuple): The fields from the model to include in the form.
     """
-    
+
     class Meta:
         model = Booking
         fields = ('places_reserved',)
