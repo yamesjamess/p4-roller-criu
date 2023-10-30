@@ -27,22 +27,22 @@ If the Guest users want to access more functionality such as: like/unlike lesson
 * **USER STORY (#1)** : Gather ideas and general requirements for the project.
   * As a **developer**, I can **visualise how the website should be designed**, so that **the website gets developed methodically**.
 
-* **USER STORY (#2)** : Intial Django project setup
+* **USER STORY (#2)** : Initial Django project setup
   * As a **developer**, I can **set up the developing environment and deploy to Heroku**, so that **I can solve any deployment issue that arises early on**.
 * **USER STORY (#3)** : Create bootstrap template
   * As a **developer**, I can **create an essential website using Bootstrap**, so that **it meets my site's requirements**.
 * **USER STORY (#4)** : Demonstrate the application's purpose using its user interface
   * As a **Site User**, I can **visit the website**, so that **I can understand and determine the purpose of the website**.
 * **USER STORY (#5)** : Navigate site
-  * As a **Site user**, I can **navigate the website using the menu**, so that **I can easily access the website's funcationality**.
+  * As a **Site user**, I can **navigate the website using the menu**, so that **I can easily access the website's functionality**.
 * **USER STORY (#6)** : View lessons list
-  * As a **Site User**, I can **view a list of lessons**, so that **I can select on to access for more details**.
+  * As a **Site User**, I can **view a list of lessons**, so that **I can select one to access for more details**.
 * **USER STORY (#7)** : View lesson information
   * As a **Site User**, I can **click on a lesson**, so that **I can view the full details of the lesson**.
 * **USER STORY (#8)** : Book a lesson
   * As a **Site User**, I can **submit a lesson booking request**, so that **a place reserved for me**.
 * **USER STORY (#9)** : View booked lessons
-  * As a **Site user**, I can **access the list of lessons that I have sent a booking request**, so that **I can see if my lessons has been approved or not**.
+  * As a **Site user**, I can **access the list of lessons that I have sent a booking request**, so that **I can see if my lessons have been approved or not**.
 * **USER STORY (#10)** : Cancel a lesson booking
   * As a **Site user**, I can **cancel a lesson booking request**, so that **the place is no longer reserved for me**.
 * **USER STORY (#11)** : View likes on a lesson
@@ -51,11 +51,11 @@ If the Guest users want to access more functionality such as: like/unlike lesson
   * As a **Site User**, I can **like or unlike a lesson**, so that **I can give quick feedback on my experience**.
 * **USER STORY (#13)** : Feedback on a lesson
   * As a **Site User**, I can **leave feedback on the lesson**, so that **give more detailed feedback on my experience**.
-* **USER STORY (#14)** : View feedback
+* **USER STORY (#14)** : View Feedback
   * As a **Site user**, I can **view feedback on individual lessons**, so that **I can use the feedback to help me make a decision to submit a booking request or not**.
 * **USER STORY (#15)** : Approve/Not Approve feedback
   * As a **Site Admin**, I can **approve or not approve feedback**, so that **I can filter out unsuitable or objectionable feedback**.
-* **USER STORY (#16)** : Create lesson draft
+* **USER STORY (#16)** : Create a lesson draft
   * As a **Site Admin**, I can **create a draft for a lesson**, so that **I can come back to finish writing the lesson details later**.
 * **USER STORY (#17)** : Manage Lesson
   * As a **Site Admin**, I can **create, read, update and delete lessons**, so that **I can manage lesson availability and site's content**.
@@ -63,7 +63,7 @@ If the Guest users want to access more functionality such as: like/unlike lesson
   * As a **Site user**, I can **register an account**, so that **I can log in to book, leave feedback, and/or like a lesson**.
 * **USER STORY (#19)** : Manage Coach
   * As a **Site Admin**, I can **create, read, update and delete coaches**, so that **I can manage coaches content**.
-* **USER STORY (#20)** : Create coach draft
+* **USER STORY (#20)** : Create a coach draft
   * As a **Site Admin**, I can **create a draft for a coach**, so that **I can come back to finish writing the class details later**.
 * **USER STORY (#21)** : Approve bookings
   * As a **Site Admin**, I can **review and approve or disapprove a booking request**, so that **I can manage the capacity of the lesson**.
@@ -75,16 +75,19 @@ If the Guest users want to access more functionality such as: like/unlike lesson
 ### Existing Features
 
 * **Feature (#1)** : Navigation bar
-  * The navigation bar's design and placement is the consistent on every page.
-  * The navigation bar features the brand's Logo, Home, About, Contact links.
-  * If the user is not logged in, the user can see links that takes them to the Register and Login page.
+  * The navigation bar's design and placement is consistent on every page.
+  * The navigation bar features the brand's Logo, Home, About, and Contact links.
+  * If the user is not logged in, the user can see links that take them to the Register and Login page.
   * If the user is logged in, the user can see My Bookings link and Logout link instead of Register and Login.
-  * The same applies to an Admin user, with an additonal of Admin link that takes the Admin to the Admin panel.
-  * The navigation bar is fully responsive on multiple screen sizes. On smaller screens the links collapse into a "Hamburger" style menu
+  * The same applies to an Admin user, with an additional of Admin link that takes the Admin to the Admin panel.
+  * The navigation bar is fully responsive on multiple screen sizes. On smaller screens, the links collapse into a "Hamburger" style menu
 
   ![Navbar Full](documentation/support_images/nav_bar_full.png)
+  
   ![Navbar Full Signed In](documentation/support_images/nav_bar_full_login.png)
+  
   ![Navbar Admin](documentation/support_images/nav_bar_admin.png)
+  
   ![Navbar Small](documentation/support_images/nav_bar_small.png)
 
 * **Feature (#2)** : Landing Page
@@ -93,59 +96,65 @@ If the Guest users want to access more functionality such as: like/unlike lesson
   ![Landing Page](documentation/support_images/landing_page.png)
 
 * **Feature (#3)** : Lesson Lists
-  * Just below the welcome image and text overlay, the user can find the list of lessons that has been added and published by the Admin.
-  * The list shows a summarised version of the lesson's detail. The details that are included in this are the featured image, difficulty level, the title of the lesson, lesson start time, duration, location, and number of likes.
-  * To make sure that the landing page is not overcrowded with the lesson summaries, the limit has been set to a maximum of 6 lessons per page. With help of pagination, the user can navigate to the rest of the lessons by clicking NEXT or PREV.
+  * Just below the welcome image and text overlay, the user can find the list of lessons that have been added and published by the Admin.
+  * The list shows a summarised version of the lesson's details. The details that are included in this are the featured image, difficulty level, the title of the lesson, lesson start time, duration, location, and number of likes.
+  * To make sure that the landing page is not overcrowded with the lesson summaries, the limit has been set to a maximum of 6 lessons per page. With the help of pagination, the user can navigate to the rest of the lessons by clicking NEXT or PREV.
 
   ![Lesson List](documentation/support_images/lesson_list.png)
 
 * **Feature (#4)** : Lesson Details Page
   * When the user clicks on the title of a lesson from the lesson list, they will be taken to the Lesson Details page.
-  * The Lesson Details page shows a full detail of the lesson such as: The featured image, difficulty level, title, lesson start time, duration, a full description of the lesson.
+  * The Lesson Details page shows full details of the lesson such as the featured image, difficulty level, title, lesson start time, duration, full description of the lesson.
   * Next to the featured image, the user can find the Coach's picture, name, and specialization.
   * Underneath the Coach's info, the user can submit a booking request [Feature (#7)] if the user is logged in.
-    * If the user is not logged in, the form button will be disabled and a message will display that the user must login to book a lesson.
+    * If the user is not logged in, the form button will be disabled and a message will display that the user must log in to book a lesson.
   * Below, the user can find the counter for likes [Feature (#6)] and Feedback [Feature (#5)]
   * Below that, the user can see the feedback that has been approved by the admin showing up in this section.
 
   ![Lesson Details](documentation/support_images/lesson_details.png)
 
 * **Feature (#5)** : Feedback
-  * If the user wishes to leave a feedback, they must be logged in. If they don't have an account they can simply register.
-  * When the user logs in the can see the feedback form in bottom of the lesson details page.
-  * The user must enter a feedback in the Body field, if the field is empty, the user will be alert with an error message.
+  * If the user wishes to leave feedback, they must be logged in. If they don't have an account they can simply register.
+  * When the user logs in they can see the feedback form at the bottom of the lesson details page.
+  * The user must enter feedback in the Body field, if the field is empty, the user will be alerted with an error message.
   * The feedback left by the user must be approved by the admin before it is visible on that lesson details page.
-  * To approve the feedback, the admin simply go to the admin panel, opens the Feedback table, selects the feedback(s) and choose the 'Approved Feedback' action. Alternatively, the admin can approve a feedback by opening up the specific feedback and tick the Approved checkbox.
-  * The admin can also unapprove feedback using the same method as approving but instead of 'Approve Feedback' action, they need to select 'Unapproved Feedback' action. Same thing can be do with individual feedback by opening it up and un-tick the checkbox.
-  * After the feedback has been approved, it will show up on the lesson that the user left the feedback on. The feedbacks are ordered by newest first.
+  * To approve the feedback, the admin simply goes to the admin panel, opens the Feedback table, selects the feedback(s) and chooses the 'Approved Feedback' action. Alternatively, the admin can approve feedback by opening up the specific feedback and tick the Approved checkbox.
+  * The admin can also unapproved feedback using the same method as approving but instead of the 'Approve Feedback' action, they need to select the 'Unapproved Feedback' action. The same thing can be done with individual feedback by opening it up and un-tick the checkbox.
+  * After the feedback has been approved, it will show up on the lesson that the user left the feedback on. The feedback is ordered by the newest first.
 
   ![Feedback](documentation/support_images/feedback.png)
+  
   ![Feedback Actions](documentation/support_images/batch_feedback_actions.png)
 
 * **Feature (#6)** : Like
   * If the user wishes to like a lesson, they must be logged in.
   * To like a lesson, the user can simply click on the heart icon on the lesson details page, and the heart will turn solid.
-  * To unlike a lesson, simply click again on the solid heart, and it will turn to a blank heart.
+  * To unlike a lesson, simply click again on the solid heart, and it will turn into a blank heart.
+
   ![Likes](documentation/support_images/likes.png)
 
 * **Feature (#7)** : Book
   * If the user wishes to book a lesson, they must be logged in.
-  * The booking can be done via the lesson details page, the booking form is right underneath the Coach's detail.
-  * The user must select how many places they want to reserved for that lesson.
-    * To provide a fair chance for everyone to get a slot for a lesson, the places reserved is limited to 1. This limit is coded into the frontend of the form.
-    * This is implemented because each skater should have their own account, skaters shouldn't be sharing an account.
-  * Then the user can simply click the 'Book!' button and the will get a message to notify them that their request has been submitted.
-  * If the user attemps to book the lesson again before leaving the page, they will encounter an error message.
-  * Once the user submitted a booking for that lesson and leaves that lesson detail page and come back again they will see a message saying they have booked this lesson and should go to 'My Bookings' page.
+  * The booking can be done via the lesson details page, the booking form is right underneath the Coach's details.
+  * The user must select how many places they want to reserve for that lesson.
+    * To provide a fair chance for everyone to get a slot for a lesson, the places reserved are currently limited to 1. **This limit is coded into the front end of the form**.
+    * This is implemented because each skater should have their account, skaters shouldn't be sharing an account.
+  * Then the user can simply click the 'Book!' button and they will get a message to notify them that their request has been submitted.
+  * If the user attempts to book the lesson again before leaving the page, they will encounter an error message.
+  * Once the user submits a booking for that lesson leaves that lesson detail page and comes back again they will see a message saying they have booked this lesson and should go to the -'My Bookings' page.
   * The admin will then have to approve the booking request. 
-    * To approve the booking request, the admin needs to be logged into the admin's account, and navigate to the admin panel, then Bookings table. Select the booking(s) and use the 'Approve Booking' action. Alternatively, the admin can approve a booking by opening up the specific booking and select 'Approved' from the options.
-    * The admin can also unapprove booking using the same method as approving but instead of 'Approve Booking' action, they need to select 'Unapprove Booking' action. Same thing can be do with individual booking by opening up the specific booking and select 'Approved' from the options.
+    * To approve the booking request, the admin needs to be logged into the admin's account, and navigate to the admin panel, then the Bookings table. Select the booking(s) and use the 'Approve Booking' action. Alternatively, the admin can approve a booking by opening up the specific booking and selecting the 'Approved' from the options.
+    * The admin can also unapproved booking using the same method as approving but instead of 'Approve Booking' action, they need to select the 'Unapprove Booking' action. Same thing can be do with individual booking by opening up the specific booking and select the 'Approved' from the options.
   * The user can visit 'My Bookings' [Feature (#8)] to check their upcoming and past bookings and booking request status.
   
   ![Booking](documentation/support_images/booking.png)
+
   ![Booking Success](documentation/support_images/booking_success.png)
+
   ![Booking Error](documentation/support_images/booking_error.png)
+
   ![Already Booked](documentation/support_images/already_booked.png)
+  
   ![Booking Actions](documentation/support_images/batch_booking_actions.png)
 
 * **Feature (#8)** : My Bookings Page
@@ -161,7 +170,9 @@ If the Guest users want to access more functionality such as: like/unlike lesson
   * To cancel/delete a booking the user must logged in and visit 'My Bookings' page.
   * The user can simply click on the cancel/delete button present on each bookings.
   * The user will be prompted with an alert asking if they want to confirm cancellation/deletion as part of defensive design.
+  
   ![Cancel Booking](documentation/support_images/cancel_booking.png)
+  
   ![Delete Booking](documentation/support_images/delete_booking.png)
 
 * **Feature (#10)** : Contact Page
@@ -172,6 +183,7 @@ If the Guest users want to access more functionality such as: like/unlike lesson
   * Once the form is submitted, the user will get a success message.
 
   ![Contact](documentation/support_images/contact.png)
+  
   ![Contact Success](documentation/support_images/contact_success.png)
 
 * **Feature (#11)** : User Authentication
@@ -185,6 +197,7 @@ If the Guest users want to access more functionality such as: like/unlike lesson
         * Password (password must fit the criteria required, criteria is shown underneath password field)
         * Password again to verify
       * Once registered, the user will be logged in automatically by the system and redirected to the Landing page.
+      
       ![Register](documentation/support_images/register.png)
     * User Log In
       * The user can navigate to the 'Login' Page via the Login link on the navigation bar.
@@ -196,10 +209,12 @@ If the Guest users want to access more functionality such as: like/unlike lesson
       * To log in the user must provide:
         * Username
         * Password 
+      
       ![Login](documentation/support_images/login.png)
     * User Log Out
       * A logged in user can navigate to the 'Logout' Page via the Logout link on the navigation bar.
       * On this page the user can simply click the button to confirm their action to logout.
+      
       ![Logout](documentation/support_images/logout.png)
 
 * **Feature (#12)** : Add and Publish a Coach
@@ -215,6 +230,7 @@ If the Guest users want to access more functionality such as: like/unlike lesson
     * Years of experience - Input a positive integer
     * Status - Select Publish to Publish the lesson.
   * After filling out all the fields, simply click 'SAVE' to finish.
+  
   ![Create Coach](documentation/support_images/create_coach.png)
 
 
@@ -234,18 +250,22 @@ If the Guest users want to access more functionality such as: like/unlike lesson
     * Status - Select Publish to Publish the lesson.
     * Likes - show which user likes the lesson, the username will be highlighted if they liked the lesson.
   * After filling out all the fields, simply click 'SAVE' to finish.
+  
   ![Create Lesson](documentation/support_images/create_lesson.png)
 
 * **Feature (#14)** : On-screen messages
   * To provide user with a clear feedback visually on-screen, messages have been implemented to certain scenarios such as when the user logged in or logged out, book a lesson, incorrectly entering their credentails, etc. 
   * For the pop up on-screen messages, they will disappear after 5 seconds. 
   * For issues like incorrect password, the message will disappear once the user has correctly enter their password. 
+  
   ![On-screen Message](documentation/support_images/success_message.png)
+  
   ![Password Error](documentation/support_images/password_error.png)
 
 ### How these features support the user stories
 
 * The user stories are numbered from 1 to 22. The features are also numbered from 1 to 14. Below is the cross-reference between the user stories and features, to illustrate that the features satisfies the user stories.
+
 ![User Story and Feature Cross Reference](documentation/support_images/user_story_feature_cross_ref.png)
 
 
@@ -347,28 +367,36 @@ automated tests.
     * Paste into the validator.
 
   * **results for index.html**
+  
   ![index.html](documentation/support_images/validator/html/index.png)
 
   * **results for about.html**
+  
   ![about.html](documentation/support_images/validator/html/about.png)
 
   * **results for lesson_detail.html**
+  
   ![lesson_detail.html](documentation/support_images/validator/html/lesson_detail.png)
 
   * **results for my_bookings.html**
+  
   ![my_bookings.html](documentation/support_images/validator/html/my_bookings.png)
 
   * **results for contact.html**
+  
   ![contact.html](documentation/support_images/validator/html/contact.png)
 
   * **results for login.html**
+  
   ![login.html](documentation/support_images/validator/html/login.png)
 
   * **results for signup.html**
     * The error cannot be fix due to the form was rendered by Crispy
+  
   ![signup.html](documentation/support_images/validator/html/register.png)
 
   * **results for logout.html**
+  
   ![logout.html](documentation/support_images/validator/html/logout.png)
 
 * [CSS Validator](https://jigsaw.w3.org/css-validator/)
@@ -385,43 +413,55 @@ automated tests.
 
   * **results for script.js**
     * the undefined variable is because the script.js is a standalone file so it has no access to bootstrap, but when linked together in base.html it can access the variable.
+  
   ![script.js](documentation/support_images/validator/js/javascript.png)
 
 * [CI Python Linter](https://pep8ci.herokuapp.com/)
 
   * **result for admin.py**
+    
     ![admin.py](documentation/support_images/validator/python/admin_py.png)
 
   * **result for test_admin.py**
+    
     ![test_admin.py](documentation/support_images/validator/python/test_admin_py.png)
 
   * **result for forms.py**
+    
     ![forms.py](documentation/support_images/validator/python/forms_py.png)
 
   * **result for test_forms.py**
+    
     ![test_forms.py](documentation/support_images/validator/python/test_forms_py.png)
 
   * **result for models.py**
+    
     ![models.py](documentation/support_images/validator/python/models_py.png)
 
   * **result for test_models.py**
+    
     ![test_models.py](documentation/support_images/validator/python/test_models_py.png)
 
   * **result for views.py**
+    
     ![views.py](documentation/support_images/validator/python/views_py.png)
 
   * **result for test_views.py**
+    
     ![test_views.py](documentation/support_images/validator/python/test_views_py.png)
 
   * **result for urls.py**
+    
     ![urls.py](documentation/support_images/validator/python/urls_py.png)
 
 ### Automated Testing
 
   * [Django testing tools](https://docs.djangoproject.com/en/4.2/topics/testing/tools/) were used to create automated testing for python code.
     * results of the test
+    
     ![automated test result](documentation/support_images/automated_testing/automated_test_result.png)
     * coverage report
+    
     ![coverage report](documentation/support_images/automated_testing/coverage_report.png)
 
   * DB tests were run in the development environment against a local SQLite3 database.
@@ -542,7 +582,7 @@ Once code changes have been completed and tested on localhost, the application c
 
 ### Code
 
-* A lot of the coding and logic and testing is adapted from the walkthrough project "Hello Django" and "I Think Therefore I Blog" walkthroughs by the Code Institue.
+* A lot of the coding and logic and testing is adapted from the walkthrough project "Hello Django" and "I Think Therefore I Blog" walkthroughs by the Code Institute.
 * The idea and layout and formatting of the website and code is also heavily inspired by : elainebroche-dev's [PF4-Wayfarers](https://github.com/elainebroche-dev/pf4-wayfarers-guided-hikes/tree/main)
 * Some inspiration taken from : rstan-dev's [PP4-Yoomoov](https://github.com/rstan-dev/pp4-yoomoov/tree/main)
 * Admin panel customisation from : TraversyMedia's [Python Django Dev To Deployment](https://www.traversymedia.com/Python-Django-Dev-To-Deployment)
@@ -562,6 +602,7 @@ Once code changes have been completed and tested on localhost, the application c
 * Code to test styling for custom error page : [Custom Error Page styling](https://code-institute-room.slack.com/archives/C026PTF46F5/p1677259598061899?thread_ts=1677257666.571489&cid=C026PTF46F5)
 * Disable darkmode on admin panel : [Dark mode](https://stackoverflow.com/questions/67193106/disable-prefers-color-scheme-dark-in-django-admin)
 * Code for adding context to views : [Context](https://stackoverflow.com/questions/51631651/why-use-get-context-data-self-kwargs-and-super)
+* How to validate HTML for Django projects : [Code Institute](https://www.youtube.com/watch?v=6j9dZTW4owI)
 
 ### Content
 * Information on the website is created by the developer.
