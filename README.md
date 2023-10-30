@@ -1,10 +1,14 @@
 <h1 align="center">Roller Criú</h1>
 
-[View the live project here](#)
+[View the live project here](https://roller-criu-54a9c256735c.herokuapp.com/)
 
-![Roller Criú](documentation/support_images/#)
+![Roller Criú](documentation/support_images/roller_criu_main.png)
 
-Brief description of the website
+Roller Criú is a website for a fictional roller skating school based in Cork, Co. Cork, Ireland.
+
+Guest users can visit the website and view the lists of lessons available, the About page that displays the details of Roller Criú, or submit a contact form if they want to send a message. 
+
+If the Guest users want to access more functionality such as: like/unlike lessons, submit a booking request, view and manage their bookings. The user must be registered and logged in to access those functions.
 
 ## Table of Contents
 ---
@@ -19,9 +23,13 @@ Brief description of the website
 ## User Experience
 ---
 
-### As a user, I want to be able to :
+### User Stories :
 
-1. 
+* User Story #1: Gather ideas and general requirements for the project.
+  * As a **developer**, I can **visualise how the website should be designed**, so that **the website gets developed methodically**
+
+* User Story #2: Intial Django project setup
+  * As a **developer**, I can **set up the developing environment and deploy to Heroku**, so that I can **solve any deployment issue that arises early on**
 
 ## Features
 ---
