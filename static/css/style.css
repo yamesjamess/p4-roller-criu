@@ -166,9 +166,14 @@ a:hover {
 }
 
 
-.masthead-image {
+.masthead-image-container {
     position: relative;
     overflow: hidden;
+}
+
+.masthead-image{
+    width: 100%;
+    height: 100%;
 }
 
 .masthead-booking{
@@ -181,6 +186,7 @@ a:hover {
 .coach-image {
     max-width: 250px;
     max-height: 250px;
+    width: 100%;
 }
 
 .coach-text {
