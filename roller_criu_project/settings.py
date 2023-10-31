@@ -35,9 +35,6 @@ SECRET_KEY = 'os.environ.get("SECRET_KEY")'
 # False for deployment
 DEBUG = False
 
-# # True for local host testing
-# DEBUG = True
-
 # For summernotes
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
@@ -119,15 +116,6 @@ WSGI_APPLICATION = 'roller_criu_project.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-
-# Enable this for automated testing
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
 
 # Enable this for deployment
 
