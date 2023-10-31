@@ -583,7 +583,7 @@ Once code changes have been completed and tested on localhost, the application c
 ### Code
 
 * A lot of the coding and logic and testing is adapted from the walkthrough project "Hello Django" and "I Think Therefore I Blog" walkthroughs by the Code Institute.
-* The idea and layout and formatting of the website and code is also heavily inspired by : elainebroche-dev's [PF4-Wayfarers](https://github.com/elainebroche-dev/pf4-wayfarers-guided-hikes/tree/main)
+* The idea, layout, formatting of the website, code is also heavily inspired by : elainebroche-dev's [PF4-Wayfarers](https://github.com/elainebroche-dev/pf4-wayfarers-guided-hikes/tree/main)
 * Some inspiration taken from : rstan-dev's [PP4-Yoomoov](https://github.com/rstan-dev/pp4-yoomoov/tree/main)
 * Admin panel customisation from : TraversyMedia's [Python Django Dev To Deployment](https://www.traversymedia.com/Python-Django-Dev-To-Deployment)
 * Code to set active nav item : [Active Nav Item](https://gist.github.com/delneg/b6d625708ae1a75fd5f036a5fe6f6a62)
@@ -606,6 +606,8 @@ Once code changes have been completed and tested on localhost, the application c
 
 ### Content
 * Information on the website is created by the developer.
+  * Inpsiration from Roller Criu Cork (more info below)
+  * Inspiration from Cork Figure Skating Association (more info below)
 
 ### Media
 * Kodchasarn font was used and imported from [Google Fonts](https://fonts.google.com/)
@@ -629,3 +631,5 @@ Once code changes have been completed and tested on localhost, the application c
 * Thank you to my wonderful mentor, Brian Macharia, for helping me during all phases of the project.
 * Special thanks to Adam Lloyd, with the help trying to debug django and listens to all my complaints.
 * Special thanks to all the tutors at Code Institute for all you help!
+* Special thanks to Roisin Navin for creating the Roller Criú group in Cork, Ireland. Currently the group is only a casual social group for all types of skaters and not just roller skating. Your group have had so much impact on my mental and physical health for the past year. I'm so grateful we have this group in Cork.
+* Special thanks to Cork Figure Skating Association (CFSA) for teaching me the proper skating technique. This conception of this website came from the frustration when visiting CFSA's website. This website could potentially be a new updated version that CFSA needs.
